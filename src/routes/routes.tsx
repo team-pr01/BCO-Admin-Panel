@@ -4,6 +4,7 @@ import Unauthorized from './../pages/Unauthorized/Unauthorized';
 import NotFound from "../pages/NotFound/NotFound";
 import { ProtectedRoute } from "./ProtectedRoute";
 import Layout from "../layouts/Layout";
+import Messages from "../pages/Messages/Messages";
 
 export const router = createBrowserRouter([
   {
@@ -11,7 +12,7 @@ export const router = createBrowserRouter([
     element: <Login />,
   },
   {
-    path: "/unauthorized",
+    path: "unauthorized",
     element: <Unauthorized />,
   },
   {
@@ -20,8 +21,8 @@ export const router = createBrowserRouter([
     errorElement: <NotFound />,
     children: [
       {
-        path: "/",
-        // element: <Home />,
+        path: "messages",
+        element: <Messages />,
       },
     ],
   },

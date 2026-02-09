@@ -1,14 +1,14 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import {
   createApi,
-  DefinitionType,
   fetchBaseQuery,
 } from "@reduxjs/toolkit/query/react";
 import { setUser } from "../Features/Auth/authSlice";
 import type { RootState } from "../store";
 import type { BaseQueryApi, BaseQueryFn, FetchArgs } from "@reduxjs/toolkit/query";
+import type { DefinitionType } from "@reduxjs/toolkit/query";
 
-export const baseUrl = "https://vedic-app-server.onrender.com";
+export const baseUrl = "https://bco-app-server.onrender.com";
 // export const baseUrl = "http://localhost:5000";
 
 const baseQuery = fetchBaseQuery({
@@ -54,7 +54,7 @@ export const baseApi = createApi({
   reducerPath: "baseApi",
   baseQuery: baseQueryWithRefreshToken,
   tagTypes: [
-    "emergencies",
+    "messages",
     "users",
     "reels",
     "yoga",

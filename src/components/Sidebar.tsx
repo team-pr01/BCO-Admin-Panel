@@ -44,7 +44,7 @@ export function Sidebar({ isDarkMode, toggleDarkMode }: SidebarProps) {
   const location = useLocation();
   const sidebarLinks = [
     { icon: LayoutDashboard, label: "Dashboard", path: "/dashboard" },
-    { icon: AlertTriangle, label: "Emergency", path: "/dashboard/emergency" },
+    { icon: AlertTriangle, label: "Messages", path: "/dashboard/messages" },
     { icon: Users, label: "Users", path: "/dashboard/users" },
     {
       icon: BookOpen,
@@ -153,23 +153,20 @@ export function Sidebar({ isDarkMode, toggleDarkMode }: SidebarProps) {
 
       <nav className="flex-1 p-4 overflow-y-auto bg-white dark:bg-gray-800">
         <div className="space-y-2">
-          {sidebarLinks.map(
-            (item) =>
-              user!.assignedPages?.includes(item.path) && (
-                <Link
-                  key={item.label}
-                  to={item.path}
-                  className={`w-full flex items-center space-x-3 px-3 py-2 rounded-lg transition-colors ${
-                    item.path === location.pathname
-                      ? "bg-blue-50 dark:bg-blue-900/20 text-blue-600 dark:text-blue-400"
-                      : "text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700"
-                  }`}
-                >
-                  <item.icon className="w-5 h-5" />
-                  <span>{item.label}</span>
-                </Link>
-              )
-          )}
+          {sidebarLinks?.map((item) => (
+            <Link
+              key={item.label}
+              to={item.path}
+              className={`w-full flex items-center space-x-3 px-3 py-2 rounded-lg transition-colors ${
+                item.path === location.pathname
+                  ? "bg-blue-50 dark:bg-blue-900/20 text-blue-600 dark:text-blue-400"
+                  : "text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700"
+              }`}
+            >
+              <item.icon className="w-5 h-5" />
+              <span>{item.label}</span>
+            </Link>
+          ))}
         </div>
       </nav>
 
