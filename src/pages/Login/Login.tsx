@@ -37,7 +37,7 @@ const Login = () => {
 
       // Setting the user in Redux state
       dispatch(setUser({ user, token }));
-      navigate("/dashboard");
+      navigate("/dashboard/users");
     } catch (err: any) {
       console.log(err);
       toast.error( "Invalid email or password!");

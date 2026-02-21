@@ -13,11 +13,13 @@ import ConsultancyService from "../pages/ConsultancyService/ConsultancyService";
 import Consultations from "../pages/Consultations/Consultations";
 import Shop from "../pages/Shop/Shop";
 import ContentManagement from "../pages/ContentManagement/ContentManagement";
+import Users from "../pages/Users/Users";
+import { PublicRoute } from './PublicRoute';
 
 export const router = createBrowserRouter([
   {
     path: "/",
-    element: <Login />,
+    element: <PublicRoute><Login /></PublicRoute>,
   },
   {
     path: "unauthorized",
@@ -67,6 +69,10 @@ export const router = createBrowserRouter([
       {
         path: "content",
         element: <ContentManagement />,
+      },
+      {
+        path: "users",
+        element: <Users />,
       },
     ],
   },

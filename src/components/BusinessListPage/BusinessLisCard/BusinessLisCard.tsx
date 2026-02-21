@@ -46,7 +46,7 @@ const BusinessListCard: React.FC<TBusinessCardProps> = ({
 
   return (
     <>
-      <div className="bg-white dark:bg-gray-800 rounded-lg shadow overflow-hidden">
+      <div className="bg-white rounded-lg shadow overflow-hidden">
         {/* Image */}
         <div className="h-64 overflow-hidden relative">
           <img
@@ -71,25 +71,25 @@ const BusinessListCard: React.FC<TBusinessCardProps> = ({
 
         {/* Content */}
         <div className="p-4 space-y-2">
-          <h3 className="text-lg font-semibold text-gray-900 dark:text-white capitalize">
+          <h3 className="text-lg font-semibold text-gray-900  capitalize">
             {business?.businessName}
           </h3>
 
-          <p className="text-sm text-gray-500 dark:text-gray-400">
+          <p className="text-sm text-gray-500 ">
             <span className="font-medium">Type:</span> {business?.businessType}
           </p>
 
-          <p className="text-sm text-gray-500 dark:text-gray-400 flex items-center">
+          <p className="text-sm text-gray-500  flex items-center">
             <MapPin className="h-4 w-4 mr-1" />
             {business?.location}
           </p>
 
-          <p className="text-sm text-gray-500 dark:text-gray-400 flex items-center">
+          <p className="text-sm text-gray-500  flex items-center">
             <Phone className="h-4 w-4 mr-1" />
             {business?.phoneNumber}
           </p>
 
-          <p className="text-sm text-gray-500 dark:text-gray-400 line-clamp-3">
+          <p className="text-sm text-gray-500  line-clamp-3">
             {business?.description}
           </p>
 
@@ -98,14 +98,14 @@ const BusinessListCard: React.FC<TBusinessCardProps> = ({
               onClick={() => {
                 setActiveTab("details");
               }}
-              className="px-3 py-1 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 rounded-md text-sm"
+              className="px-3 py-1 bg-blue-100  text-blue-800 rounded-md text-sm"
             >
               View Details
             </button>
 
             <button
               onClick={() => setShowDeleteModal(true)}
-              className="px-3 py-1 bg-red-100 dark:bg-red-900 text-red-800 dark:text-red-200 rounded-md text-sm"
+              className="px-3 py-1 bg-red-100 text-red-800 rounded-md text-sm"
             >
               Delete
             </button>
@@ -113,7 +113,7 @@ const BusinessListCard: React.FC<TBusinessCardProps> = ({
             {business?.status === "pending" && (
               <button
                 onClick={handleApproveBusiness}
-                className="px-3 py-1 bg-green-100 dark:bg-green-600 text-green-600 dark:text-green-300 rounded-md text-sm"
+                className="px-3 py-1 bg-green-100 text-green-600 rounded-md text-sm"
               >
                 Approve
               </button>

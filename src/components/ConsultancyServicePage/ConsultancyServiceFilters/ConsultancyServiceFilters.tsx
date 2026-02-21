@@ -33,14 +33,14 @@ const ConsultancyServiceFilters: React.FC<TConsultancyServiceFiltersProps> = ({
             placeholder="Search services..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            className="w-full pl-10 pr-4 py-2 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 focus:outline-none focus:border-primary-500 transition duration-300"
+            className="w-full pl-10 pr-4 py-2 rounded-lg border border-gray-300 bg-white focus:outline-none focus:border-primary-500 transition duration-300"
           />
         </div>
       </div>
       <select
         value={category}
         onChange={(e) => setCategory(e.target.value)}
-        className="rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800"
+        className="rounded-lg border border-gray-300 bg-white"
       >
         <option value="">All Categories</option>
         {categoryNames?.map((category: any, index: number) => (

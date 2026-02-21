@@ -171,7 +171,7 @@ const AddorEditBookTextForm: React.FC<TAddorEditBookTextFormProps> = ({
 
   return (
     <div className="fixed inset-0 bg-gray-800/50 flex items-center justify-center p-4 z-50">
-      <div className="bg-white dark:bg-gray-800 rounded-lg shadow-xl max-w-2xl w-full max-h-[90vh] overflow-y-auto">
+      <div className="bg-white rounded-lg shadow-xl max-w-2xl w-full max-h-[90vh] overflow-y-auto">
         <form onSubmit={handleSubmit(onSubmit)} className="p-6 space-y-6">
           <div className="flex items-center justify-between">
             <h3 className="text-xl font-semibold">

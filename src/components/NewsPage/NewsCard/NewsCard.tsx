@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { Trash2, Calendar, Edit2, Eye, Heart } from "lucide-react";
 import { format } from "date-fns";
 
@@ -43,7 +44,7 @@ const NewsCard: React.FC<TNewsCardProps> = ({
   if (!translation) return null;
 
   return (
-    <div className="bg-white dark:bg-gray-800 rounded-lg shadow-sm hover:shadow-md transition-shadow">
+    <div className="bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow">
       {article?.imageUrl && (
         <img
           src={article.imageUrl}
@@ -55,10 +56,10 @@ const NewsCard: React.FC<TNewsCardProps> = ({
       <div className="p-6">
         <div className="flex items-start justify-between">
           <div>
-            <h3 className="text-lg font-semibold text-gray-900 dark:text-white">
+            <h3 className="text-lg font-semibold text-gray-900">
               {translation.title}
             </h3>
-            <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium mt-1 bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200">
+            <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium mt-1 bg-green-100 text-green-800">
               {translation.category}
             </span>
           </div>
@@ -66,13 +67,13 @@ const NewsCard: React.FC<TNewsCardProps> = ({
           <div className="flex space-x-2">
             <button
               onClick={handleEdit}
-              className="text-blue-600 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-300"
+              className="text-blue-600 hover:text-blue-800"
             >
               <Edit2 className="h-5 w-5" />
             </button>
             <button
               onClick={() => handleDeleteNews(article._id)}
-              className="text-red-600 hover:text-red-800 dark:text-red-400 dark:hover:text-red-300"
+              className="text-red-600 hover:text-red-800"
             >
               <Trash2 className="h-5 w-5" />
             </button>
@@ -83,7 +84,7 @@ const NewsCard: React.FC<TNewsCardProps> = ({
           {translation.tags?.map((tag, index) => (
             <span
               key={index}
-              className="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200"
+              className="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-blue-100 text-blue-800"
             >
               {tag}
             </span>
@@ -91,7 +92,7 @@ const NewsCard: React.FC<TNewsCardProps> = ({
         </div>
 
         {/* Date, Views, Likes */}
-        <div className="mt-4 flex items-center justify-between text-sm text-gray-500 dark:text-gray-400">
+        <div className="mt-4 flex items-center justify-between text-sm text-gray-500">
           <div className="flex items-center gap-1">
             <Calendar className="h-4 w-4" />
             {format(new Date(article.createdAt), "MMM d, yyyy")}

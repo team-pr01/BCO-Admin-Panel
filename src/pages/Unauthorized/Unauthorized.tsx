@@ -12,13 +12,13 @@ const Unauthorized = () => {
 
 
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center bg-gray-100 dark:bg-gray-900 text-center px-4">
+    <div className="min-h-screen flex flex-col items-center justify-center bg-gray-100 text-center px-4">
       <div className="flex flex-col items-center space-y-4">
         <AlertTriangle className="w-16 h-16 text-red-500" />
-        <h1 className="text-3xl font-bold text-gray-800 dark:text-white">
+        <h1 className="text-3xl font-bold text-gray-800 ">
           Unauthorized
         </h1>
-        <p className="text-gray-600 dark:text-gray-300">
+        <p className="text-gray-600 ">
           You are not authorized to access this route.
         </p>
         <Link to={route}

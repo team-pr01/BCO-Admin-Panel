@@ -82,22 +82,22 @@ const Consultations = () => {
   const getStatusStyles = (status: string) => {
     switch (status) {
       case "pending":
-        return "bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-200";
+        return "bg-yellow-100 text-yellow-800";
       case "scheduled":
-        return "bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200";
+        return "bg-blue-100 text-blue-800 ";
       case "completed":
-        return "bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200";
+        return "bg-green-100 text-green-800";
       case "cancelled":
-        return "bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-200";
+        return "bg-red-100 text-red-800";
       default:
-        return "bg-gray-100 text-gray-800 dark:bg-gray-900 dark:text-gray-200";
+        return "bg-gray-100 text-gray-800";
     }
   };
 
   return (
     <div>
       <div className="flex items-center justify-between">
-        <h2 className="text-2xl font-bold text-gray-900 dark:text-white flex items-center">
+        <h2 className="text-2xl font-bold text-gray-900  flex items-center">
           <UserCheck className="h-6 w-6 mr-2" />
           Consultations
         </h2>
@@ -105,7 +105,7 @@ const Consultations = () => {
           <select
             value={status}
             onChange={(e) => setStatus && setStatus(e.target.value)}
-            className="p-2 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800"
+            className="p-2 rounded-lg border border-gray-300 bg-white"
           >
             <option value="">All</option>
             <option value={"pending"}>Pending</option>
@@ -115,8 +115,8 @@ const Consultations = () => {
         </div>
       </div>
       <div className="overflow-x-auto mt-5 max-w-[1600px]">
-        <table className="min-w-full divide-y divide-gray-200 dark:divide-gray-700">
-          <thead className="bg-gray-200 dark:bg-gray-900">
+        <table className="min-w-full divide-y divide-gray-200">
+          <thead className="bg-gray-200">
             <tr>
               {[
                 "User Name",
@@ -133,7 +133,7 @@ const Consultations = () => {
               ].map((header) => (
                 <th
                   key={header}
-                  className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider"
+                  className="px-6 py-3 text-left text-xs font-medium text-gray-500  uppercase tracking-wider"
                 >
                   {header}
                 </th>
@@ -152,7 +152,7 @@ const Consultations = () => {
               </tr>
             </tbody>
           ) : (
-            <tbody className="bg-white dark:bg-gray-800 divide-y divide-gray-200 dark:divide-gray-700 max-w-[1000px] capitalize">
+            <tbody className="bg-white divide-y divide-gray-200 max-w-[1000px] capitalize">
               {consultations?.data?.length > 0 ? (
                 consultations.data.map(
                   (consultation: any & { _id: string }) => (
@@ -170,7 +170,7 @@ const Consultations = () => {
                             )}`}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="text-green-600 dark:text-green-400 underline hover:text-green-800 dark:hover:text-green-300"
+                            className="text-green-600 underline hover:text-green-800"
                           >
                             {consultation.userPhoneNumber}
                           </a>
@@ -189,7 +189,7 @@ const Consultations = () => {
                             )}`}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="text-green-600 dark:text-green-400 underline hover:text-green-800 dark:hover:text-green-300"
+                            className="text-green-600 underline hover:text-green-800"
                           >
                             {consultation.consultantPhoneNumber}
                           </a>
@@ -222,7 +222,7 @@ const Consultations = () => {
                             href={consultation.meetingLink}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="text-blue-600 dark:text-blue-400 underline"
+                            className="text-blue-600 underline"
                           >
                             Link
                           </a>
@@ -235,14 +235,14 @@ const Consultations = () => {
                       ].map((field, idx) => (
                         <td
                           key={idx}
-                          className="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-400"
+                          className="px-6 py-4 whitespace-nowrap text-sm text-gray-500 "
                         >
                           {field}
                         </td>
                       ))}
 
                       {/* Schedule & Cancel Buttons */}
-                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-400 space-x-2">
+                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500  space-x-2">
                         <button
                           className={`px-3 py-1 text-sm font-medium rounded-md text-white ${
                             consultation.status === "cancelled"
@@ -283,7 +283,7 @@ const Consultations = () => {
                             onClick={() =>
                               setSelectedConsultation(consultation)
                             }
-                            className="text-green-600 dark:text-green-400 hover:text-green-900 dark:hover:text-green-300"
+                            className="text-green-600 hover:text-green-900"
                           >
                             <Eye className="w-5 h-5" />
                           </button>
@@ -292,7 +292,7 @@ const Consultations = () => {
                               handleMarkAsCompleted(consultation._id)
                             }
                             disabled={consultation.status === "cancelled"}
-                            className="text-green-600 dark:text-green-400 hover:text-green-900 dark:hover:text-blue-300 disabled:cursor-not-allowed"
+                            className="text-green-600 hover:text-green-900 disabled:cursor-not-allowed"
                           >
                             <Check className="w-5 h-5" />
                           </button>
@@ -301,7 +301,7 @@ const Consultations = () => {
                               setShowDeleteModal(true);
                               setSelectedConsultationId(consultation._id);
                             }}
-                            className="text-red-600 dark:text-red-400 hover:text-red-900 dark:hover:text-red-300"
+                            className="text-red-600  hover:text-red-900"
                           >
                             <Trash2 className="w-4 h-4" />
                           </button>
@@ -314,7 +314,7 @@ const Consultations = () => {
                 <tr>
                   <td
                     colSpan={9}
-                    className="px-6 py-4 text-center text-sm text-gray-500 dark:text-gray-400"
+                    className="px-6 py-4 text-center text-sm text-gray-500 "
                   >
                     No consultation found.
                   </td>

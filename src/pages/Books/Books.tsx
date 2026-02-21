@@ -87,7 +87,7 @@ const Books = () => {
 
   return (
     <div className="flex flex-col bg-white rounded-2xl p-5">
-      <h1 className="text-2xl font-bold text-gray-900 dark:text-white">
+      <h1 className="text-2xl font-bold text-gray-900">
         Book & Text Management
       </h1>
 
@@ -119,7 +119,7 @@ const Books = () => {
               placeholder="Search books..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full pl-10 pr-4 py-2 rounded-lg border border-gray-300 dark:border-gray-600 bg-slate-100 dark:bg-slate-700"
+              className="w-full pl-10 pr-4 py-2 rounded-lg border border-gray-300 bg-slate-100"
             />
           </div>
 

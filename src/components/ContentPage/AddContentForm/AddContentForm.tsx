@@ -79,13 +79,13 @@ const AddContentForm = ({
   return (
     showForm && (
       <div className="fixed inset-0 bg-black/50 flex items-center justify-center p-4 z-50">
-        <div className="bg-white dark:bg-gray-800 rounded-lg shadow-xl max-w-2xl w-full max-h-[90vh] overflow-y-auto">
+        <div className="bg-white rounded-lg shadow-xl max-w-2xl w-full max-h-[90vh] overflow-y-auto">
           <form
             onSubmit={handleSubmit(handleSubmitContent)}
             className="p-6 space-y-6"
           >
             <div className="flex items-center justify-between">
-              <h3 className="text-xl font-semibold text-gray-900 dark:text-white">
+              <h3 className="text-xl font-semibold text-gray-900 ">
                 {mode === "add" ? "Add New" : "Update"} Content
               </h3>
               <button
@@ -95,7 +95,7 @@ const AddContentForm = ({
                   setMode && setMode("add");
                   reset();
                 }}
-                className="text-gray-400 hover:text-gray-500 dark:hover:text-gray-300 text-2xl"
+                className="text-gray-400 hover:text-gray-500 text-2xl"
               >
                 ×
               </button>
@@ -124,7 +124,7 @@ const AddContentForm = ({
               <button
                 type="button"
                 onClick={() => setShowForm(false)}
-                className="px-4 py-2 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 dark:bg-gray-700 dark:border-gray-600 dark:text-gray-200 dark:hover:bg-gray-600"
+                className="px-4 py-2 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 "
               >
                 Cancel
               </button>

@@ -11,7 +11,7 @@ const ProductBanner = () => {
   return (
     <div className="">
       <div className="flex items-center justify-between">
-        <h2 className="text-2xl font-bold text-slate-900 dark:text-white">
+        <h2 className="text-2xl font-bold text-slate-900 ">
           Product Banner Management
         </h2>
 

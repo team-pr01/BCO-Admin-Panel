@@ -25,15 +25,15 @@ const ConsultationDetails: React.FC<TConsultationDetailsProps> = ({
 }) => {
   return (
     <div className="fixed inset-0 bg-black bg-opacity-40 flex items-center justify-center p-4 z-50">
-      <div className="bg-white dark:bg-gray-900 rounded-xl shadow-2xl max-w-3xl w-full max-h-[90vh] overflow-y-auto border border-gray-200 dark:border-gray-700">
+      <div className="bg-white rounded-xl shadow-2xl max-w-3xl w-full max-h-[90vh] overflow-y-auto border border-gray-200">
         {/* Header */}
-        <div className="flex justify-between items-center px-6 py-4 border-b dark:border-gray-700">
-          <h2 className="text-2xl font-bold text-gray-900 dark:text-white">
+        <div className="flex justify-between items-center px-6 py-4 border-b">
+          <h2 className="text-2xl font-bold text-gray-900 ">
             Consultation Details
           </h2>
           <button
             onClick={onClose}
-            className="text-gray-500 hover:text-gray-700 dark:hover:text-gray-300"
+            className="text-gray-500 hover:text-gray-700"
           >
             <X className="w-6 h-6" />
           </button>
@@ -42,26 +42,26 @@ const ConsultationDetails: React.FC<TConsultationDetailsProps> = ({
         {/* Content */}
         <div className="p-6 space-y-6">
           {/* User Info */}
-          <div className="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg shadow-inner">
-            <h3 className="text-lg font-semibold text-gray-700 dark:text-gray-300 mb-2">
+          <div className="bg-gray-50 p-4 rounded-lg shadow-inner">
+            <h3 className="text-lg font-semibold text-gray-700  mb-2">
               User Information
             </h3>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div className="flex items-center space-x-2">
-                <User className="w-5 h-5 text-gray-500 dark:text-gray-400" />
-                <span className="text-gray-900 dark:text-white">
+                <User className="w-5 h-5 text-gray-500 " />
+                <span className="text-gray-900 ">
                   {consultation.userName}
                 </span>
               </div>
               <div className="flex items-center space-x-2">
-                <Phone className="w-5 h-5 text-gray-500 dark:text-gray-400" />
-                <span className="text-gray-900 dark:text-white">
+                <Phone className="w-5 h-5 text-gray-500 " />
+                <span className="text-gray-900 ">
                   {consultation.userPhoneNumber}
                 </span>
               </div>
               <div className="flex items-center space-x-2">
-                <Mail className="w-5 h-5 text-gray-500 dark:text-gray-400" />
-                <span className="text-gray-900 dark:text-white">
+                <Mail className="w-5 h-5 text-gray-500 " />
+                <span className="text-gray-900 ">
                   {consultation.userEmail || "N/A"}
                 </span>
               </div>
@@ -69,26 +69,26 @@ const ConsultationDetails: React.FC<TConsultationDetailsProps> = ({
           </div>
 
           {/* Consultant Info */}
-          <div className="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg shadow-inner">
-            <h3 className="text-lg font-semibold text-gray-700 dark:text-gray-300 mb-2">
+          <div className="bg-gray-50 p-4 rounded-lg shadow-inner">
+            <h3 className="text-lg font-semibold text-gray-700  mb-2">
               Consultant Information
             </h3>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div className="flex items-center space-x-2">
-                <User className="w-5 h-5 text-gray-500 dark:text-gray-400" />
-                <span className="text-gray-900 dark:text-white">
+                <User className="w-5 h-5 text-gray-500 " />
+                <span className="text-gray-900 ">
                   {consultation.consultantName}
                 </span>
               </div>
               <div className="flex items-center space-x-2">
-                <Phone className="w-5 h-5 text-gray-500 dark:text-gray-400" />
-                <span className="text-gray-900 dark:text-white">
+                <Phone className="w-5 h-5 text-gray-500 " />
+                <span className="text-gray-900 ">
                   {consultation.consultantPhoneNumber}
                 </span>
               </div>
               <div className="flex items-center space-x-2">
-                <Mail className="w-5 h-5 text-gray-500 dark:text-gray-400" />
-                <span className="text-gray-900 dark:text-white">
+                <Mail className="w-5 h-5 text-gray-500 " />
+                <span className="text-gray-900 ">
                   {consultation.consultantEmail || "N/A"}
                 </span>
               </div>
@@ -96,44 +96,44 @@ const ConsultationDetails: React.FC<TConsultationDetailsProps> = ({
           </div>
 
           {/* Consultation Details */}
-          <div className="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg shadow-inner">
-            <h3 className="text-lg font-semibold text-gray-700 dark:text-gray-300 mb-2">
+          <div className="bg-gray-50 p-4 rounded-lg shadow-inner">
+            <h3 className="text-lg font-semibold text-gray-700  mb-2">
               Consultation Details
             </h3>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div className="flex items-center space-x-2">
-                <Calendar className="w-5 h-5 text-gray-500 dark:text-gray-400" />
-                <span className="text-gray-900 dark:text-white">
+                <Calendar className="w-5 h-5 text-gray-500 " />
+                <span className="text-gray-900 ">
                   {consultation.scheduledAt
                     ? new Date(consultation.scheduledAt).toLocaleString()
                     : "N/A"}
                 </span>
               </div>
               <div className="flex items-center space-x-2">
-                <DollarSign className="w-5 h-5 text-gray-500 dark:text-gray-400" />
-                <span className="text-gray-900 dark:text-white">
+                <DollarSign className="w-5 h-5 text-gray-500 " />
+                <span className="text-gray-900 ">
                   {consultation.fees}
                 </span>
               </div>
               <div>
-                <span className="font-medium text-gray-700 dark:text-gray-300">
+                <span className="font-medium text-gray-700 ">
                   Concern:
                 </span>
-                <p className="text-gray-900 dark:text-white">
+                <p className="text-gray-900 ">
                   {consultation.concern || "N/A"}
                 </p>
               </div>
               <div>
-                <span className="font-medium text-gray-700 dark:text-gray-300">
+                <span className="font-medium text-gray-700 ">
                   Status:
                 </span>
                 <p
                   className={`font-semibold capitalize ${
                     consultation.status === "completed"
-                      ? "text-green-600 dark:text-green-400"
+                      ? "text-green-600"
                       : consultation.status === "cancelled"
-                      ? "text-red-600 dark:text-red-400"
-                      : "text-yellow-600 dark:text-yellow-400"
+                      ? "text-red-600 "
+                      : "text-yellow-600"
                   }`}
                 >
                   {consultation.status || "pending"}
@@ -144,7 +144,7 @@ const ConsultationDetails: React.FC<TConsultationDetailsProps> = ({
         </div>
 
         {/* Footer */}
-        <div className="px-6 py-4 border-t dark:border-gray-700 flex justify-end">
+        <div className="px-6 py-4 border-t flex justify-end">
           <button
             onClick={onClose}
             className="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-md shadow"

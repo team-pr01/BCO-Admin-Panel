@@ -64,9 +64,9 @@ const AddBusinessListForm = () => {
   return (
     <form
   onSubmit={handleSubmit(handleAddBusiness)}
-  className="bg-white dark:bg-gray-800 rounded-lg shadow p-6 space-y-6"
+  className="bg-white rounded-lg shadow p-6 space-y-6"
 >
-  <h2 className="text-xl font-semibold text-gray-900 dark:text-white">
+  <h2 className="text-xl font-semibold text-gray-900 ">
     Add New Business
   </h2>
 

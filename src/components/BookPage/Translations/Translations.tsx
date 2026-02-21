@@ -66,7 +66,7 @@ const Translations = () => {
 
   return (
     <div className="bg-gray-100 p-4 rounded-2xl mt-8">
-      <h3 className="text-xl font-semibold text-gray-900 dark:text-gray-200">
+      <h3 className="text-xl font-semibold text-gray-900 ">
         Find Text by Location
       </h3>
 

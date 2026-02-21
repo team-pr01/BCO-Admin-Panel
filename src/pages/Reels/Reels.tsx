@@ -23,7 +23,6 @@ export type TReels = {
   updatedAt?: Date;
 };
 
-
 const Reels = () => {
   const [showCategoryForm, setShowCategoryForm] = useState(false);
   const [showForm, setShowForm] = useState(false);
@@ -34,17 +33,16 @@ const Reels = () => {
   const { data: singleReelData } = useGetSingleReelQuery(reelId);
   return (
     <div className="space-y-6">
-
       <PageHeader
-              title="Reels"
-              buttonText="Add Reel"
-              icon={<Video className="w-6 h-6 mr-2 text-white" />}
-              onClick={() => {
-                setMode("add");
-                setShowForm(true);
-              }}
-              setShowCategoryForm={setShowCategoryForm}
-            />
+        title="Reels"
+        buttonText="Add Reel"
+        icon={<Video className="w-6 h-6 mr-2 text-white" />}
+        onClick={() => {
+          setMode("add");
+          setShowForm(true);
+        }}
+        setShowCategoryForm={setShowCategoryForm}
+      />
 
       {isLoading ? (
         <Loader size="size-10" />
@@ -71,7 +69,11 @@ const Reels = () => {
       />
 
       {/* Category management */}
-      <Categories showModal={showCategoryForm} setShowModal={setShowCategoryForm} areaName="reels" />
+      <Categories
+        showModal={showCategoryForm}
+        setShowModal={setShowCategoryForm}
+        areaName="reels"
+      />
     </div>
   );
 };

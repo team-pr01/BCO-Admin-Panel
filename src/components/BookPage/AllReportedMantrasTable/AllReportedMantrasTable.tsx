@@ -46,11 +46,11 @@ const AllReportedMantrasTable: React.FC<AllReportedMantrasTableProps> = ({
   const getStatusClasses = (status: string) => {
     switch (status) {
       case "resolved":
-        return "bg-green-100 text-green-700 dark:bg-green-800 dark:text-green-300";
+        return "bg-green-100 text-green-700";
       case "dismissed":
-        return "bg-red-100 text-red-700 dark:bg-red-800 dark:text-red-300";
+        return "bg-red-100 text-red-700";
       default:
-        return "bg-yellow-100 text-yellow-700 dark:bg-yellow-800 dark:text-yellow-300";
+        return "bg-yellow-100 text-yellow-700";
     }
   };
 
@@ -64,7 +64,7 @@ const AllReportedMantrasTable: React.FC<AllReportedMantrasTableProps> = ({
 
   if (!reportedMantras || reportedMantras?.length === 0) {
     return (
-      <div className="w-full flex justify-center items-center py-20 text-gray-500 dark:text-gray-400 text-lg">
+      <div className="w-full flex justify-center items-center py-20 text-gray-500 text-lg">
         No reported mantras found
       </div>
     );
@@ -74,7 +74,7 @@ const AllReportedMantrasTable: React.FC<AllReportedMantrasTableProps> = ({
     <div className="w-full overflow-x-auto mt-8">
       <table className="w-full border-collapse">
         <thead>
-          <tr className="text-left text-gray-700 dark:text-gray-200">
+          <tr className="text-left text-gray-700">
             <th className="pb-2">Original Text</th>
             <th className="pb-2">Reason</th>
             <th className="pb-2">Status</th>
@@ -85,17 +85,17 @@ const AllReportedMantrasTable: React.FC<AllReportedMantrasTableProps> = ({
         <tbody>
           <tr>
             <td colSpan={5}>
-              <div className="border-b border-gray-300 dark:border-gray-600 mb-2"></div>
+              <div className="border-b border-gray-300 mb-2"></div>
             </td>
           </tr>
 
           {reportedMantras?.map((mantra) => (
             <React.Fragment key={mantra._id}>
-              <tr className="hover:bg-gray-50 dark:hover:bg-gray-700 align-middle">
-                <td className="py-2 text-gray-700 dark:text-gray-200">
+              <tr className="hover:bg-gray-50 align-middle">
+                <td className="py-2 text-gray-700">
                   {mantra.originalText}
                 </td>
-                <td className="py-2 text-gray-700 dark:text-gray-200 capitalize">
+                <td className="py-2 text-gray-700 capitalize">
                   {mantra.reason}
                 </td>
                 <td className="py-2">
@@ -134,7 +134,7 @@ const AllReportedMantrasTable: React.FC<AllReportedMantrasTableProps> = ({
 
               <tr>
                 <td colSpan={5}>
-                  <div className="border-b border-gray-200 dark:border-gray-600 my-2"></div>
+                  <div className="border-b border-gray-200 my-2"></div>
                 </td>
               </tr>
             </React.Fragment>

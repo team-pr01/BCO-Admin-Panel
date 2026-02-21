@@ -30,7 +30,7 @@ const ReelCard = ({
 
   const embedUrl = reel?.videoUrl ? getEmbedUrl(reel.videoUrl) : null;
   return (
-    <div className="bg-white dark:bg-gray-800 rounded-lg shadow-sm overflow-hidden">
+    <div className="bg-white rounded-lg shadow-sm overflow-hidden">
       <div className="aspect-video">
         <iframe
           src={embedUrl as string}
@@ -42,14 +42,14 @@ const ReelCard = ({
       <div className="p-6">
         <div className="flex items-start justify-between">
           <div>
-            <h3 className="text-lg font-semibold text-gray-900 dark:text-white">
+            <h3 className="text-lg font-semibold text-gray-900 ">
               {reel?.title}
             </h3>
             <div className="flex items-center gap-5">
-              <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200 mt-2">
+              <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800 mt-2">
                 {reel?.category}
               </span>
-              <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-orange-200 text-blue-800 dark:bg-blue-900 dark:text-blue-200 mt-2">
+              <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-orange-200 text-blue-800 mt-2">
                 {reel?.videoSource}
               </span>
             </div>
@@ -61,20 +61,20 @@ const ReelCard = ({
                 setMode && setMode("edit");
                 setShowForm(true);
               }}
-              className="p-2 text-blue-600 hover:bg-blue-50 rounded-lg dark:text-blue-400 dark:hover:bg-blue-900/20"
+              className="p-2 text-blue-600 hover:bg-blue-50 rounded-lg"
             >
               <Edit2 className="h-5 w-5" />
             </button>
             <button
               onClick={() => handleDeleteReel(reel?._id)}
-              className="p-2 text-red-600 hover:bg-red-50 rounded-lg dark:text-red-400 dark:hover:bg-red-900/20"
+              className="p-2 text-red-600 hover:bg-red-50 rounded-lg"
             >
               <Trash2 className="h-5 w-5" />
             </button>
           </div>
         </div>
 
-        <p className="mt-2 text-sm text-gray-600 dark:text-gray-300">
+        <p className="mt-2 text-sm text-gray-600 ">
           {reel?.description}
         </p>
 
@@ -82,14 +82,14 @@ const ReelCard = ({
           {reel?.tags.map((tag: string, index: number) => (
             <span
               key={index}
-              className="px-2 py-1 text-xs rounded-full bg-gray-100 text-gray-800 dark:bg-gray-700 dark:text-gray-200"
+              className="px-2 py-1 text-xs rounded-full bg-gray-100 text-gray-800 "
             >
               {tag}
             </span>
           ))}
         </div>
 
-        <div className="mt-4 text-sm text-gray-500 dark:text-gray-400">
+        <div className="mt-4 text-sm text-gray-500 ">
           Added{" "}
           {reel?.createdAt
             ? new Date(reel.createdAt).toLocaleDateString()

@@ -1,3 +1,6 @@
+/* eslint-disable react-hooks/set-state-in-effect */
+/* eslint-disable @typescript-eslint/no-non-null-asserted-optional-chain */
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import React, { useEffect, useState } from "react";
 import {
   useGetMantraToResolveQuery,
@@ -5,10 +8,10 @@ import {
   useResolveIssueMutation,
   useUpdateStatusMutation,
 } from "../../../redux/Features/Book/reportedMantraApi";
-import Loader from "../../Shared/Loader/Loader";
 import toast from "react-hot-toast";
 import { format } from "date-fns";
-import Textarea from "../../Reusable/TextArea/TextArea";
+import Loader from "../../shared/Loader/Loader";
+import Textarea from "../../reusable/TextArea/TextArea";
 
 interface ReviewMantraModalProps {
   selectedMantraId: string;
@@ -129,7 +132,7 @@ const ReviewMantraModal: React.FC<ReviewMantraModalProps> = ({
 
   return (
     <div className="fixed inset-0 bg-black/50 flex items-center justify-center p-4 z-50">
-      <div className="bg-white dark:bg-gray-800 rounded-lg shadow-xl max-w-5xl w-full max-h-[90vh] overflow-y-auto relative">
+      <div className="bg-white rounded-lg shadow-xl max-w-5xl w-full max-h-[90vh] overflow-y-auto relative">
         {/* Loader (centered) */}
         {(isLoading || isFetching) && (
           <div className="py-20">
@@ -141,13 +144,13 @@ const ReviewMantraModal: React.FC<ReviewMantraModalProps> = ({
         {!isLoading && !isFetching && data && (
           <>
             {/* Header */}
-            <div className="flex justify-between items-center p-4 border-b border-slate-200 dark:border-slate-700">
-              <h2 className="text-xl font-semibold text-slate-800 dark:text-white">
+            <div className="flex justify-between items-center p-4 border-b border-slate-200 ">
+              <h2 className="text-xl font-semibold text-slate-800 ">
                 Review Mantra Report
               </h2>
               <button
                 onClick={() => setIsReviewMantraModalOpen(false)}
-                className="text-slate-500 hover:text-slate-700 dark:hover:text-slate-300 text-2xl font-bold"
+                className="text-slate-500 hover:text-slate-700 text-2xl font-bold"
               >
                 ×
               </button>
@@ -156,29 +159,29 @@ const ReviewMantraModal: React.FC<ReviewMantraModalProps> = ({
             {/* Content */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 p-6">
               {/* Left - Report Details */}
-              <div className="bg-slate-100 dark:bg-slate-900/50 rounded-lg p-5 border border-slate-200 dark:border-slate-700">
-                <h3 className="text-lg font-semibold text-slate-700 dark:text-slate-100 mb-3">
+              <div className="bg-slate-100 rounded-lg p-5 border border-slate-200 ">
+                <h3 className="text-lg font-semibold text-slate-700 mb-3">
                   Report Details
                 </h3>
 
                 <div className="space-y-3">
                   <div>
                     <p className="text-sm text-slate-500">Reason</p>
-                    <div className="bg-white dark:bg-gray-700 p-3 rounded border border-slate-200 dark:border-slate-600 text-slate-800 dark:text-slate-100">
+                    <div className="bg-white p-3 rounded border border-slate-200 text-slate-800">
                       {data.reason}
                     </div>
                   </div>
 
                   <div>
                     <p className="text-sm text-slate-500">Feedback</p>
-                    <div className="bg-white dark:bg-gray-700 p-3 rounded border border-slate-200 dark:border-slate-600 text-slate-800 dark:text-slate-100 italic">
+                    <div className="bg-white p-3 rounded border border-slate-200 text-slate-800 italic">
                       “{data.feedback}”
                     </div>
                   </div>
 
                   <div>
                     <p className="text-sm text-slate-500">Reported On</p>
-                    <div className="bg-white dark:bg-gray-700 p-3 rounded border border-slate-200 dark:border-slate-600 text-slate-800 dark:text-slate-100">
+                    <div className="bg-white p-3 rounded border border-slate-200 text-slate-800">
                       {data?.createdAt
                         ? format(
                             new Date(data.createdAt),
@@ -214,8 +217,8 @@ const ReviewMantraModal: React.FC<ReviewMantraModalProps> = ({
               </div>
 
               {/* Mantra (view only) */}
-              <div className="bg-slate-100 dark:bg-slate-900/50 rounded-lg p-5 border border-slate-200 dark:border-slate-700">
-                <h3 className="text-lg font-semibold text-slate-700 dark:text-slate-100 mb-3">
+              <div className="bg-slate-100 rounded-lg p-5 border border-slate-200 ">
+                <h3 className="text-lg font-semibold text-slate-700 mb-3">
                   Mantra
                 </h3>
 
@@ -223,13 +226,13 @@ const ReviewMantraModal: React.FC<ReviewMantraModalProps> = ({
                   <div className="bg-white p-4 rounded-lg w-full flex items-center gap-5">
                     <div>
                       <p className="text-sm text-slate-500">Book Name</p>
-                      <p className="text-sm text-slate-800 dark:text-slate-100 mt-1">
+                      <p className="text-sm text-slate-800 mt-1">
                         {data?.bookId?.name}
                       </p>
                     </div>
                     <div>
                       <p className="text-sm text-slate-500">Mantra Location</p>
-                      <p className="text-sm text-slate-800 dark:text-slate-100 mt-1">
+                      <p className="text-sm text-slate-800 mt-1">
                         {data?.textId?.location
                           ?.map(
                             (location: any) =>
@@ -242,14 +245,14 @@ const ReviewMantraModal: React.FC<ReviewMantraModalProps> = ({
 
                   <div>
                     <p className="text-sm text-slate-500">Original Text</p>
-                    <div className="bg-white dark:bg-gray-700 p-3 rounded border border-slate-200 dark:border-slate-600 text-slate-800 dark:text-slate-100 whitespace-pre-line">
+                    <div className="bg-white p-3 rounded border border-slate-200 text-slate-800 whitespace-pre-line">
                       {data.originalText}
                     </div>
                   </div>
 
                   <div>
                     <p className="text-sm text-slate-500">Translation</p>
-                    <div className="bg-white dark:bg-gray-700 p-3 rounded border border-slate-200 dark:border-slate-600 text-slate-800 dark:text-slate-100 whitespace-pre-line">
+                    <div className="bg-white p-3 rounded border border-slate-200 text-slate-800 whitespace-pre-line">
                       {data.translation}
                     </div>
                   </div>
@@ -274,7 +277,7 @@ const ReviewMantraModal: React.FC<ReviewMantraModalProps> = ({
             </div>
 
             {/* Footer */}
-            <div className="flex justify-between items-center px-6 py-4 border-t border-slate-200 dark:border-slate-700">
+            <div className="flex justify-between items-center px-6 py-4 border-t border-slate-200 ">
               <div className="flex items-center gap-2">
                 <input
                   id="humanVerifiedCheckbox"
@@ -307,7 +310,7 @@ const ReviewMantraModal: React.FC<ReviewMantraModalProps> = ({
                 />
                 <label
                   htmlFor="humanVerifiedCheckbox"
-                  className="text-slate-700 dark:text-slate-300 text-sm cursor-pointer"
+                  className="text-slate-700 text-sm cursor-pointer"
                 >
                   Mark as Human Verified
                 </label>
@@ -317,7 +320,7 @@ const ReviewMantraModal: React.FC<ReviewMantraModalProps> = ({
                 <button
                   onClick={handleDismissReport}
                   type="button"
-                  className="px-4 py-2 bg-slate-200 dark:bg-slate-600 text-slate-800 dark:text-white font-semibold rounded-lg hover:bg-slate-300 dark:hover:bg-slate-500"
+                  className="px-4 py-2 bg-slate-200 text-slate-800  font-semibold rounded-lg hover:bg-slate-300"
                 >
                   {isUpdateStatus ? "Please wait..." : "Dismiss Report"}
                 </button>

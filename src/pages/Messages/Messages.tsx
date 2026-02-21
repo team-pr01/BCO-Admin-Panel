@@ -9,7 +9,7 @@ const Messages = () => {
 
   return (
     <div className="space-y-6">
-      <h2 className="text-2xl font-bold text-gray-900 dark:text-white flex items-center">
+      <h2 className="text-2xl font-bold text-gray-900  flex items-center">
         <AlertTriangle className="h-6 w-6 mr-2 text-red-500" />
         Contact Messages
       </h2>

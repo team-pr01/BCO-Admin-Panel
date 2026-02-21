@@ -223,7 +223,7 @@ const TranslateBookModal = ({
 
   return (
     <div className="fixed inset-0 bg-black/50 flex items-center justify-center p-4 z-50">
-      <div className="bg-white dark:bg-gray-800 rounded-lg shadow-xl max-w-5xl w-full max-h-[90vh] overflow-y-auto">
+      <div className="bg-white rounded-lg shadow-xl max-w-5xl w-full max-h-[90vh] overflow-y-auto">
         <form onSubmit={handleSubmit(onSubmit)}>
           <div className="p-6 flex flex-col max-h-[75vh]">
             <div className="mb-4 flex flex-col justify-end">
@@ -279,19 +279,19 @@ const TranslateBookModal = ({
             </div>
             <div className="flex-grow grid grid-cols-1 md:grid-cols-12 gap-6 overflow-y-auto">
               <div className="md:col-span-4 space-y-4">
-                <div className="bg-slate-100 dark:bg-slate-900/50 p-4 rounded-lg sticky top-0">
-                  <label className="text-xs font-bold text-slate-500 dark:text-slate-400">
+                <div className="bg-slate-100 p-4 rounded-lg sticky top-0">
+                  <label className="text-xs font-bold text-slate-500">
                     ORIGINAL TEXT (SANSKRIT)
                   </label>
-                  <p className="mt-1 text-slate-700 dark:text-slate-200 whitespace-pre-wrap font-serif text-lg">
+                  <p className="mt-1 text-slate-700 whitespace-pre-wrap font-serif text-lg">
                     {data?.originalText}
                   </p>
                 </div>
-                <div className="bg-slate-100 dark:bg-slate-900/50 p-4 rounded-lg">
-                  <label className="text-xs font-bold text-slate-500 dark:text-slate-400">
+                <div className="bg-slate-100 p-4 rounded-lg">
+                  <label className="text-xs font-bold text-slate-500">
                     PRIMARY TRANSLATION
                   </label>
-                  <p className="mt-1 text-slate-700 dark:text-slate-200 whitespace-pre-wrap">
+                  <p className="mt-1 text-slate-700 whitespace-pre-wrap">
                     {data?.primaryTranslation}
                   </p>
                 </div>
@@ -307,9 +307,9 @@ const TranslateBookModal = ({
                   return (
                     <div
                       key={lang.code}
-                      className="bg-slate-100 dark:bg-slate-800/50 p-4 rounded-lg"
+                      className="bg-slate-100 p-4 rounded-lg"
                     >
-                      <h4 className="font-bold text-lg text-slate-800 dark:text-slate-100 mb-3">
+                      <h4 className="font-bold text-lg text-slate-800 mb-3">
                         {lang.name}
                       </h4>
                       <div className="space-y-4">
@@ -374,11 +374,11 @@ const TranslateBookModal = ({
             </div>
           </div>
 
-          <div className="p-4 bg-slate-100 dark:bg-slate-900/50 border-t border-slate-200 dark:border-slate-700 flex justify-end gap-3">
+          <div className="p-4 bg-slate-100 border-t border-slate-200  flex justify-end gap-3">
             <button
               onClick={() => setIsTranslateModalOpen(false)}
               type="button"
-              className="px-4 py-2 bg-slate-200 dark:bg-slate-600 text-slate-800 dark:text-white font-semibold rounded-lg hover:bg-slate-300 dark:hover:bg-slate-500 disabled:opacity-50"
+              className="px-4 py-2 bg-slate-200 text-slate-800  font-semibold rounded-lg hover:bg-slate-300 disabled:opacity-50"
             >
               Cancel
             </button>

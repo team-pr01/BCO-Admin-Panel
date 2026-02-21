@@ -57,7 +57,7 @@ const AllTextsTable: React.FC<AllTextsTableProps> = ({
 
   if (!texts || texts.length === 0) {
     return (
-      <div className="w-full flex justify-center items-center py-20 text-gray-500 dark:text-gray-400 text-lg">
+      <div className="w-full flex justify-center items-center py-20 text-gray-500  text-lg">
         No text found
       </div>
     );
@@ -67,7 +67,7 @@ const AllTextsTable: React.FC<AllTextsTableProps> = ({
     <div className="w-full overflow-x-auto mt-8">
       <table className="w-full border-collapse">
         <thead>
-          <tr className="text-left text-gray-700 dark:text-gray-200">
+          <tr className="text-left text-gray-700">
             <th className="pb-2">Book & Location</th>
             <th className="pb-2">Text</th>
             <th className="pb-2">Tags</th>
@@ -78,25 +78,25 @@ const AllTextsTable: React.FC<AllTextsTableProps> = ({
           {/* Border below headers */}
           <tr>
             <td colSpan={5}>
-              <div className="border-b border-gray-300 dark:border-gray-600 mb-2"></div>
+              <div className="border-b border-gray-300 mb-2"></div>
             </td>
           </tr>
 
           {texts.map((text) => (
             <React.Fragment key={text._id}>
-              <tr className="hover:bg-gray-50 dark:hover:bg-gray-700 align-middle">
-                <td className="py-2 align-middle text-gray-700 dark:text-gray-200">
+              <tr className="hover:bg-gray-50 align-middle">
+                <td className="py-2 align-middle text-gray-700">
                   <div className="font-medium">{text.bookId?.name}</div>
-                  <div className="text-sm text-gray-500 dark:text-gray-400">
+                  <div className="text-sm text-gray-500">
                    {
                     text?.location?.map((location) => `${location.levelName}-${location?.value}`).join(", ")
                    }
                   </div>
                 </td>
-                <td className="py-2 align-middle text-gray-700 dark:text-gray-200">
+                <td className="py-2 align-middle text-gray-700">
                   {text.originalText}
                 </td>
-                <td className="py-2 align-middle text-gray-700 dark:text-gray-200 capitalize">
+                <td className="py-2 align-middle text-gray-700 capitalize">
                   {text.tags.join(", ")}
                 </td>
                 <td className="py-2 align-middle flex gap-3 items-center">
@@ -116,7 +116,7 @@ const AllTextsTable: React.FC<AllTextsTableProps> = ({
               {/* Border after each text */}
               <tr>
                 <td colSpan={5}>
-                  <div className="border-b border-gray-200 dark:border-gray-600 my-2"></div>
+                  <div className="border-b border-gray-200 my-2"></div>
                 </td>
               </tr>
             </React.Fragment>

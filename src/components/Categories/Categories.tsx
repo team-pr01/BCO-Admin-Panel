@@ -79,9 +79,9 @@ const Categories = ({
   return (
     showModal && (
       <div className="fixed inset-0 bg-black/50 flex items-center justify-center p-4 z-50">
-        <div className="bg-white dark:bg-gray-800 rounded-lg shadow-xl max-w-2xl w-full max-h-[700px] overflow-y-auto p-6">
+        <div className="bg-white rounded-lg shadow-xl max-w-2xl w-full max-h-[700px] overflow-y-auto p-6">
           <div className="flex items-center justify-between">
-            <h3 className="text-xl font-semibold text-gray-900 dark:text-white">
+            <h3 className="text-xl font-semibold text-gray-900 ">
               Manage Categories
             </h3>
             <button
@@ -90,14 +90,14 @@ const Categories = ({
                 setShowModal(false);
                 reset();
               }}
-              className="text-gray-400 hover:text-gray-500 dark:hover:text-gray-300 text-2xl"
+              className="text-gray-400 hover:text-gray-500 text-2xl"
             >
               ×
             </button>
           </div>
 
           <div className="flex items-center justify-between mt-5">
-            <h3 className=" font-semibold text-gray-900 dark:text-white">
+            <h3 className=" font-semibold text-gray-900 ">
               All Categories
             </h3>
             <button
@@ -149,7 +149,7 @@ const Categories = ({
                 <button
                   type="button"
                   onClick={() => setShowModal(false)}
-                  className="px-4 py-2 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 dark:bg-gray-700 dark:border-gray-600 dark:text-gray-200 dark:hover:bg-gray-600"
+                  className="px-4 py-2 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 "
                 >
                   Cancel
                 </button>

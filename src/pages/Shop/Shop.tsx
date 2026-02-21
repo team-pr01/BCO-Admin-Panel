@@ -77,11 +77,11 @@ const Shop = () => {
     if (!label) return null;
     const styles: Record<any, string> = {
       "New Product":
-        "bg-green-100 text-green-700 dark:bg-green-500/20 dark:text-green-300",
+        "bg-green-100 text-green-700",
       "Limited Product":
-        "bg-amber-100 text-amber-700 dark:bg-amber-500/20 dark:text-amber-300",
+        "bg-amber-100 text-amber-700",
       "Best Seller":
-        "bg-blue-100 text-blue-700 dark:bg-blue-500/20 dark:text-blue-300",
+        "bg-blue-100 text-blue-700",
     };
     return (
       <span
@@ -104,30 +104,30 @@ const Shop = () => {
   };
   return (
     <div className="space-y-6">
-      <h2 className="text-2xl font-bold text-slate-900 dark:text-white">
+      <h2 className="text-2xl font-bold text-slate-900 ">
         Shop Management
       </h2>
 
       {/* Stats card */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-        <div className="bg-white dark:bg-slate-800 p-6 rounded-2xl border border-slate-200 dark:border-slate-700 flex items-center gap-4">
-          <div className="p-3 rounded-full bg-blue-100 dark:bg-blue-500/20">
-            <Package className="w-6 h-6 text-blue-500 dark:text-blue-300" />
+        <div className="bg-white p-6 rounded-2xl border border-slate-200  flex items-center gap-4">
+          <div className="p-3 rounded-full bg-blue-100">
+            <Package className="w-6 h-6 text-blue-500" />
           </div>
           <div>
-            <p className="text-slate-500 dark:text-slate-400">Total Products</p>
-            <p className="text-2xl font-bold text-slate-900 dark:text-white">
+            <p className="text-slate-500">Total Products</p>
+            <p className="text-2xl font-bold text-slate-900 ">
               {stats.totalProducts}
             </p>
           </div>
         </div>
-        <div className="bg-white dark:bg-slate-800 p-6 rounded-2xl border border-slate-200 dark:border-slate-700 flex items-center gap-4">
-          <div className="p-3 rounded-full bg-green-100 dark:bg-green-500/20">
-            <BarChart className="w-6 h-6 text-green-500 dark:text-green-300" />
+        <div className="bg-white p-6 rounded-2xl border border-slate-200  flex items-center gap-4">
+          <div className="p-3 rounded-full bg-green-100">
+            <BarChart className="w-6 h-6 text-green-500" />
           </div>
           <div>
-            <p className="text-slate-500 dark:text-slate-400">Total Clicks</p>
-            <p className="text-2xl font-bold text-slate-900 dark:text-white">
+            <p className="text-slate-500">Total Clicks</p>
+            <p className="text-2xl font-bold text-slate-900 ">
               {stats.totalClicks.toLocaleString()}
             </p>
           </div>
@@ -135,7 +135,7 @@ const Shop = () => {
       </div>
 
       {/* Table & Header */}
-      <div className="bg-white dark:bg-slate-800 p-6 rounded-2xl border border-slate-200 dark:border-slate-700">
+      <div className="bg-white p-6 rounded-2xl border border-slate-200 ">
         {/* Table header */}
         <div className="flex justify-between items-center mb-4">
           <h3 className="text-lg font-bold">All Products</h3>
@@ -148,7 +148,7 @@ const Shop = () => {
                   placeholder={`Search product by name...`}
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
-                  className="w-full pl-10 pr-4 py-2 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 focus:outline-none focus:border-primary-500 transition duration-300"
+                  className="w-full pl-10 pr-4 py-2 rounded-lg border border-gray-300 bg-white focus:outline-none focus:border-primary-500 transition duration-300"
                 />
               </div>
             </div>
@@ -156,7 +156,7 @@ const Shop = () => {
               <select
                 value={category}
                 onChange={(e) => setCategory && setCategory(e.target.value)}
-                className="px-2 py-2 rounded-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 focus:outline-none focus:border-primary-500 transition duration-300"
+                className="px-2 py-2 rounded-lg border border-gray-300 bg-white focus:outline-none focus:border-primary-500 transition duration-300"
               >
                 <option value="">All Categories</option>
                 {categoryNames?.map((category: any, index: number) => (
@@ -187,7 +187,7 @@ const Shop = () => {
           {/* Product table */}
         <div className="overflow-x-auto">
           <table className="w-full text-left text-sm whitespace-nowrap">
-            <thead className="border-b border-slate-200 dark:border-slate-700 text-slate-500 dark:text-slate-400">
+            <thead className="border-b border-slate-200  text-slate-500">
               <tr>
                 <th className="p-3 font-semibold">PRODUCT</th>
                 <th className="p-3 font-semibold">CATEGORY</th>
@@ -210,7 +210,7 @@ const Shop = () => {
                 allProducts.map((product: TProduct) => (
                   <tr
                     key={product._id}
-                    className="border-b border-slate-200/50 dark:border-slate-700/50 hover:bg-slate-50 dark:hover:bg-slate-700/50"
+                    className="border-b border-slate-200/50 /50 hover:bg-slate-50"
                   >
                     <td className="p-3">
                       <div className="flex items-center gap-3">
@@ -219,15 +219,15 @@ const Shop = () => {
                           alt={product.name}
                           className="w-12 h-12 rounded-md object-cover"
                         />
-                        <span className="font-medium text-slate-900 dark:text-white">
+                        <span className="font-medium text-slate-900 ">
                           {product.name}
                         </span>
                       </div>
                     </td>
-                    <td className="p-3 text-slate-600 dark:text-slate-300">
+                    <td className="p-3 text-slate-600">
                       {product.category}
                     </td>
-                    <td className="p-3 font-mono text-slate-800 dark:text-slate-200">
+                    <td className="p-3 font-mono text-slate-800">
                       {Number(product.discountedPrice)} {" "}
                       <span className="text-sm line-through text-red-500">
                           {Number(product.basePrice).toFixed(2)}
@@ -237,7 +237,7 @@ const Shop = () => {
                     <td className="p-3">
                       <LabelBadge label={product.label} />
                     </td>
-                    <td className="p-3 text-center text-slate-600 dark:text-slate-300 font-mono">
+                    <td className="p-3 text-center text-slate-600 font-mono">
                       {product.clicks}
                     </td>
                     <td className="p-3">
@@ -269,7 +269,7 @@ const Shop = () => {
                 <tr>
                   <td
                     colSpan={6}
-                    className="py-10 text-center text-slate-500 dark:text-slate-400"
+                    className="py-10 text-center text-slate-500"
                   >
                     No products found
                   </td>

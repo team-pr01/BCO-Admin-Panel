@@ -179,10 +179,10 @@ const AddBookForm: React.FC<TAddBookFormProps> = ({
 
   return (
     <div className="fixed inset-0 bg-black/50 flex items-center justify-center p-4 z-50">
-      <div className="bg-white dark:bg-gray-800 rounded-lg shadow-xl max-w-2xl w-full max-h-[90vh] overflow-y-auto">
+      <div className="bg-white rounded-lg shadow-xl max-w-2xl w-full max-h-[90vh] overflow-y-auto">
         <form onSubmit={handleSubmit(onSubmit)} className="p-6 space-y-6">
           <div className="flex items-center justify-between">
-            <h3 className="text-xl font-semibold text-gray-900 dark:text-gray-200">
+            <h3 className="text-xl font-semibold text-gray-900">
               {mode === "edit" ? "Edit" : "Add"} Book
             </h3>
             <button
@@ -192,7 +192,7 @@ const AddBookForm: React.FC<TAddBookFormProps> = ({
                 setShowForm(false);
                 setMode("add");
               }}
-              className="text-gray-400 hover:text-gray-600 dark:hover:text-gray-300"
+              className="text-gray-400 hover:text-gray-600"
             >
               <X className="h-6 w-6" />
             </button>
@@ -229,7 +229,7 @@ const AddBookForm: React.FC<TAddBookFormProps> = ({
             {/* Only show inputs if Custom */}
             {watchStructure === "Custom" && (
               <div className="flex flex-col gap-4 bg-gray-100 p-3 rounded-xl">
-                <h3 className=" font-semibold text-gray-900 dark:text-gray-200">
+                <h3 className=" font-semibold text-gray-900">
                   Add custom structures
                 </h3>
                 {fields.map((field, index) => (
@@ -259,7 +259,7 @@ const AddBookForm: React.FC<TAddBookFormProps> = ({
             <button
               type="button"
               onClick={() => setShowForm(false)}
-              className="px-4 py-2 border border-gray-300 rounded-md text-sm font-medium text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700"
+              className="px-4 py-2 border border-gray-300 rounded-md text-sm font-medium text-gray-700 hover:bg-gray-100"
             >
               Cancel
             </button>

@@ -21,7 +21,7 @@ const PageHeader = ({
 }: PageHeaderProps) => {
   return (
     <div className="flex items-center justify-between mb-6">
-      <h2 className="text-2xl font-bold text-gray-900 dark:text-white">
+      <h2 className="text-2xl font-bold text-gray-900 ">
         {title}
       </h2>
       <div className="flex items-center gap-4">

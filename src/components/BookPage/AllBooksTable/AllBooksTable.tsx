@@ -53,7 +53,7 @@ const AllBooksTable: React.FC<AllBooksTableProps> = ({
 
   if (!books || books.length === 0) {
     return (
-      <div className="w-full flex justify-center items-center py-20 text-gray-500 dark:text-gray-400 text-lg">
+      <div className="w-full flex justify-center items-center py-20 text-gray-500 text-lg">
         No book found
       </div>
     );
@@ -63,7 +63,7 @@ const AllBooksTable: React.FC<AllBooksTableProps> = ({
     <div className="w-full overflow-x-auto mt-8">
       <table className="w-full border-collapse">
         <thead>
-          <tr className="text-left text-gray-700 dark:text-gray-200">
+          <tr className="text-left text-gray-700">
             <th className="pb-2">Cover</th>
             <th className="pb-2">Name</th>
             <th className="pb-2">Type</th>
@@ -75,13 +75,13 @@ const AllBooksTable: React.FC<AllBooksTableProps> = ({
           {/* Border below headers */}
           <tr>
             <td colSpan={5}>
-              <div className="border-b border-gray-300 dark:border-gray-600 mb-2"></div>
+              <div className="border-b border-gray-300 mb-2"></div>
             </td>
           </tr>
 
           {books.map((book) => (
             <React.Fragment key={book?._id}>
-              <tr className="hover:bg-gray-50 dark:hover:bg-gray-700 align-middle capitalize">
+              <tr className="hover:bg-gray-50 align-middle capitalize">
                 <td className="py-2 align-middle">
                   <img
                     src={book?.imageUrl}
@@ -89,13 +89,13 @@ const AllBooksTable: React.FC<AllBooksTableProps> = ({
                     className="size-16 object-cover rounded"
                   />
                 </td>
-                <td className="py-2 align-middle text-gray-700 dark:text-gray-200">
+                <td className="py-2 align-middle text-gray-700">
                   {book?.name}
                 </td>
-                <td className="py-2 align-middle text-gray-700 dark:text-gray-200">
+                <td className="py-2 align-middle text-gray-700">
                   {book?.type}
                 </td>
-                <td className="py-2 align-middle text-gray-700 dark:text-gray-200">
+                <td className="py-2 align-middle text-gray-700">
                   {book?.structure === "Custom"
                     ? `Custom (${book?.level1Name || "-"}, ${
                         book?.level2Name || "-"
@@ -120,7 +120,7 @@ const AllBooksTable: React.FC<AllBooksTableProps> = ({
               {/* Border after each book */}
               <tr>
                 <td colSpan={5}>
-                  <div className="border-b border-gray-200 dark:border-gray-600 my-2"></div>
+                  <div className="border-b border-gray-200 my-2"></div>
                 </td>
               </tr>
             </React.Fragment>

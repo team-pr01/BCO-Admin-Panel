@@ -55,7 +55,7 @@ const News = () => {
         {isLoading || isFetching ? (
           <Loader size="size-10" />
         ) : data?.data?.length < 1 ? (
-          <p className="text-center text-gray-500 dark:text-gray-100">
+          <p className="text-center text-gray-500">
             No data found
           </p>
         ) : (
