@@ -12,6 +12,7 @@ import BusinessList from "../pages/BusinessList/BusinessList";
 import ConsultancyService from "../pages/ConsultancyService/ConsultancyService";
 import Consultations from "../pages/Consultations/Consultations";
 import Shop from "../pages/Shop/Shop";
+import ContentManagement from "../pages/ContentManagement/ContentManagement";
 
 export const router = createBrowserRouter([
   {
@@ -53,15 +54,19 @@ export const router = createBrowserRouter([
       },
       {
         path: "consultancy-service",
-        element: <ConsultancyService/>,
+        element: <ConsultancyService />,
       },
       {
         path: "consultation",
-        element: <Consultations/>,
+        element: <Consultations />,
       },
       {
         path: "shop",
         element: <Shop />,
+      },
+      {
+        path: "content",
+        element: <ContentManagement />,
       },
     ],
   },
