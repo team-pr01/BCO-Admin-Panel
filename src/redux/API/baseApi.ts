@@ -8,7 +8,7 @@ import type { RootState } from "../store";
 import type { BaseQueryApi, BaseQueryFn, FetchArgs } from "@reduxjs/toolkit/query";
 import type { DefinitionType } from "@reduxjs/toolkit/query";
 
-export const baseUrl = "https://bco-server.vercel.app;
+export const baseUrl = "https://bco-server.vercel.app";
 // export const baseUrl = "http://localhost:5000";
 
 const baseQuery = fetchBaseQuery({
