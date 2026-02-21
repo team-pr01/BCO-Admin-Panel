@@ -11,6 +11,7 @@ import Reels from "../pages/Reels/Reels";
 import BusinessList from "../pages/BusinessList/BusinessList";
 import ConsultancyService from "../pages/ConsultancyService/ConsultancyService";
 import Consultations from "../pages/Consultations/Consultations";
+import Shop from "../pages/Shop/Shop";
 
 export const router = createBrowserRouter([
   {
@@ -57,6 +58,10 @@ export const router = createBrowserRouter([
       {
         path: "consultation",
         element: <Consultations/>,
+      },
+      {
+        path: "shop",
+        element: <Shop />,
       },
     ],
   },
