@@ -37,13 +37,8 @@ export function Sidebar({ isDarkMode, toggleDarkMode }: SidebarProps) {
       path: "/dashboard/books",
     },
     { icon: Film, label: "Reels", path: "/dashboard/reels" },
-    { icon: Building, label: "Organization", path: "/dashboard/organizations" },
+    { icon: Building, label: "Business List", path: "/dashboard/business-list" },
     { icon: Newspaper, label: "News", path: "/dashboard/news" },
-    // {
-    //   icon: BellRing,
-    //   label: "Notifications",
-    //   path: "/dashboard/notifications",
-    // },
     { icon: FileText, label: "Content Management", path: "/dashboard/content" },
     {
       icon: Headphones,

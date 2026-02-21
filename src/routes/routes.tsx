@@ -7,6 +7,8 @@ import Layout from "../layouts/Layout";
 import Messages from "../pages/Messages/Messages";
 import Books from "../pages/Books/Books";
 import News from "../pages/News/News";
+import Reels from "../pages/Reels/Reels";
+import BusinessList from "../pages/BusinessList/BusinessList";
 
 export const router = createBrowserRouter([
   {
@@ -37,6 +39,14 @@ export const router = createBrowserRouter([
       {
         path: "news",
         element: <News />,
+      },
+      {
+        path: "reels",
+        element: <Reels />,
+      },
+      {
+        path: "business-list",
+        element: <BusinessList />,
       },
     ],
   },

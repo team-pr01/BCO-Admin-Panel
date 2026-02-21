@@ -16,7 +16,6 @@ import { Newspaper } from "lucide-react";
 const News = () => {
   const [showCategoryForm, setShowCategoryForm] = useState(false);
   const [showForm, setShowForm] = useState<boolean>(false);
-  console.log(showForm);
   const [searchQuery, setSearchQuery] = useState("");
   const [category, setCategory] = useState("");
   const [id, setId] = useState("");

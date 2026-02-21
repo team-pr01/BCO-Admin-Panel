@@ -85,6 +85,7 @@ export const baseApi = createApi({
     "bulkSms",
     "dailyHoroscope",
     "subscription",
+    "businessList"
   ],
   endpoints: () => ({}),
 });
