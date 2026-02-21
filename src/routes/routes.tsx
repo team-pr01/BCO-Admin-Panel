@@ -1,10 +1,12 @@
 import { createBrowserRouter } from "react-router-dom";
 import Login from "../pages/Login/Login";
-import Unauthorized from './../pages/Unauthorized/Unauthorized';
+import Unauthorized from "./../pages/Unauthorized/Unauthorized";
 import NotFound from "../pages/NotFound/NotFound";
 import { ProtectedRoute } from "./ProtectedRoute";
 import Layout from "../layouts/Layout";
 import Messages from "../pages/Messages/Messages";
+import Books from "../pages/Books/Books";
+import News from "../pages/News/News";
 
 export const router = createBrowserRouter([
   {
@@ -17,12 +19,24 @@ export const router = createBrowserRouter([
   },
   {
     path: "dashboard",
-    element: <ProtectedRoute><Layout /></ProtectedRoute>,
+    element: (
+      <ProtectedRoute>
+        <Layout />
+      </ProtectedRoute>
+    ),
     errorElement: <NotFound />,
     children: [
       {
         path: "messages",
         element: <Messages />,
+      },
+      {
+        path: "books",
+        element: <Books />,
+      },
+      {
+        path: "news",
+        element: <News />,
       },
     ],
   },

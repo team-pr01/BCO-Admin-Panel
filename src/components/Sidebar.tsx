@@ -2,10 +2,6 @@
 import {
   LayoutDashboard,
   Users,
-  BarChart2,
-  Settings,
-  Activity,
-  HelpCircle,
   Bell,
   Sun,
   Moon,
@@ -13,22 +9,11 @@ import {
   Headphones,
   FileText,
   Building,
-  LandPlot,
   Newspaper,
-  MessageSquarePlus,
   AlertTriangle,
-  BellRing,
-  Bot as Lotus,
-  Home,
-  Key,
   Film,
-  FolderDot,
-  CreditCard,
-  GraduationCap,
-  Leaf,
   ShoppingBag,
   UserCheck,
-  Gift,
 } from "lucide-react";
 import { useSelector } from "react-redux";
 import { Link, useLocation } from "react-router-dom";
@@ -49,47 +34,17 @@ export function Sidebar({ isDarkMode, toggleDarkMode }: SidebarProps) {
     {
       icon: BookOpen,
       label: "Books",
-      path: "/dashboard/religious-texts",
-    },
-
-    // {
-    //   icon: BookOpen,
-    //   label: "Religious Texts",
-    //   path: "/dashboard/religious-texts",
-    // },
-    {
-      icon: GraduationCap,
-      label: "Course",
-      path: "/dashboard/course",
-    },
-    {
-      icon: FileText,
-      label: "Quiz",
-      path: "/dashboard/quiz",
+      path: "/dashboard/books",
     },
     { icon: Film, label: "Reels", path: "/dashboard/reels" },
-    { icon: Lotus, label: "Yoga", path: "/dashboard/yoga" },
-    { icon: Home, label: "Vastu", path: "/dashboard/vastu" },
-    {
-      icon: LandPlot,
-      label: "Temple Management",
-      path: "/dashboard/temple-management",
-    },
     { icon: Building, label: "Organization", path: "/dashboard/organizations" },
     { icon: Newspaper, label: "News", path: "/dashboard/news" },
-    {
-      icon: BellRing,
-      label: "Notifications",
-      path: "/dashboard/notifications",
-    },
-    { icon: MessageSquarePlus, label: "Popups", path: "/dashboard/popups" },
+    // {
+    //   icon: BellRing,
+    //   label: "Notifications",
+    //   path: "/dashboard/notifications",
+    // },
     { icon: FileText, label: "Content Management", path: "/dashboard/content" },
-    {
-      icon: CreditCard,
-      label: "Donation Programs",
-      path: "/dashboard/donation-programs",
-    },
-    { icon: CreditCard, label: "Total Donations", path: "/dashboard/donation" },
     {
       icon: Headphones,
       label: "Consultancy Service",
@@ -101,43 +56,10 @@ export function Sidebar({ isDarkMode, toggleDarkMode }: SidebarProps) {
       path: "/dashboard/consultation",
     },
     {
-      icon: Gift,
-      label: "Subscriptions",
-      path: "/dashboard/subscriptions",
-    },
-    {
-      icon: Sun,
-      label: "Daily Horoscope",
-      path: "/dashboard/daily-horoscope",
-    },
-
-    {
-      icon: FolderDot,
-      label: "Recipe",
-      path: "/dashboard/recipe",
-    },
-    {
-      icon: Leaf,
-      label: "Ayurveda",
-      path: "/dashboard/ayurveda",
-    },
-
-    {
       icon: ShoppingBag,
       label: "Shop",
       path: "/dashboard/shop",
     },
-    {
-      icon: ShoppingBag,
-      label: "Bulk SMS",
-      path: "/dashboard/bulk-sms",
-    },
-
-    { icon: Key, label: "API Keys", path: "/dashboard/api-keys" },
-    { icon: BarChart2, label: "Analytics", path: "/dashboard/analytics" },
-    { icon: Activity, label: "Activity", path: "/dashboard/activity" },
-    { icon: Settings, label: "Settings", path: "/dashboard/settings" },
-    { icon: HelpCircle, label: "Help", path: "/dashboard/help" },
   ];
 
   const user = useSelector(useCurrentUser) as any;
