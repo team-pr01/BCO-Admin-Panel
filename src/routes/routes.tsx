@@ -9,6 +9,8 @@ import Books from "../pages/Books/Books";
 import News from "../pages/News/News";
 import Reels from "../pages/Reels/Reels";
 import BusinessList from "../pages/BusinessList/BusinessList";
+import ConsultancyService from "../pages/ConsultancyService/ConsultancyService";
+import Consultations from "../pages/Consultations/Consultations";
 
 export const router = createBrowserRouter([
   {
@@ -47,6 +49,14 @@ export const router = createBrowserRouter([
       {
         path: "business-list",
         element: <BusinessList />,
+      },
+      {
+        path: "consultancy-service",
+        element: <ConsultancyService/>,
+      },
+      {
+        path: "consultation",
+        element: <Consultations/>,
       },
     ],
   },

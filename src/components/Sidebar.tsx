@@ -29,8 +29,8 @@ export function Sidebar({ isDarkMode, toggleDarkMode }: SidebarProps) {
   const location = useLocation();
   const sidebarLinks = [
     { icon: LayoutDashboard, label: "Dashboard", path: "/dashboard" },
-    { icon: AlertTriangle, label: "Messages", path: "/dashboard/messages" },
     { icon: Users, label: "Users", path: "/dashboard/users" },
+    { icon: AlertTriangle, label: "Messages", path: "/dashboard/messages" },
     {
       icon: BookOpen,
       label: "Books",
