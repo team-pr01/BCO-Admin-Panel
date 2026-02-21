@@ -1,9 +1,11 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable @typescript-eslint/no-non-null-asserted-optional-chain */
 import { useState } from "react";
 import { useGetAllBooksQuery } from "../../../redux/Features/Book/bookApi";
-import Loader from "../../Shared/Loader/Loader";
 import { Book } from "lucide-react";
 import TranslateBookModal from "./TranslateBookModal";
 import { useGetTextByDetailsQuery } from "../../../redux/Features/Book/textsApi";
+import Loader from "../../shared/Loader/Loader";
 
 type TSelectedBook = {
   _id: string;

@@ -1,14 +1,16 @@
+/* eslint-disable react-hooks/set-state-in-effect */
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { useForm } from "react-hook-form";
 import { useEffect, useState } from "react";
 import { X } from "lucide-react";
 import toast from "react-hot-toast";
-import SubmitButton from "../../Reusable/SubmitButton/SubmitButton";
 import {
   useAssignPagesMutation,
   useChangeUserRoleMutation,
 } from "../../../redux/Features/Auth/authApi";
-import SelectDropdown from "../../Reusable/SelectDropdown/SelectDropdown";
-import Loader from "../../Shared/Loader/Loader";
+import Loader from "../../shared/Loader/Loader";
+import SelectDropdown from "../../reusable/SelectDropdown/SelectDropdown";
+import SubmitButton from "../../reusable/SubmitButton/SubmitButton";
 
 type TFormValues = {
   role: string;

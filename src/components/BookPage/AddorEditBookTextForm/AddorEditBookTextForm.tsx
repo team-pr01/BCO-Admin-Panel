@@ -46,7 +46,6 @@ const AddorEditBookTextForm: React.FC<TAddorEditBookTextFormProps> = ({
 }) => {
   const [tagInput, setTagInput] = useState("");
   const [tags, setTags] = useState<string[]>([]);
-  const [selectedBook, setSelectedBook] = useState<any>(null);
 
   const [addText, { isLoading }] = useAddTextMutation();
   const [updateText, { isLoading: isUpdating }] = useUpdateTextMutation();
@@ -82,7 +81,6 @@ const AddorEditBookTextForm: React.FC<TAddorEditBookTextFormProps> = ({
   // 🟢 Handle selecting a book to auto-load structure levels
   const handleBookChange = (bookId: string) => {
     const book = allBookNames.find((b) => b._id === bookId);
-    setSelectedBook(book);
 
     if (book?.levels?.length) {
       replace(

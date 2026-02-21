@@ -16,14 +16,14 @@ import { Newspaper } from "lucide-react";
 const News = () => {
   const [showCategoryForm, setShowCategoryForm] = useState(false);
   const [showForm, setShowForm] = useState<boolean>(false);
-  const [searchQuery, setSearchQuery] = useState("");
-  const [category, setCategory] = useState("");
+  // const [searchQuery, setSearchQuery] = useState("");
+  // const [category, setCategory] = useState("");
   const [id, setId] = useState("");
   const [mode, setMode] = useState<"add" | "edit">("add");
 
   const { data, isLoading, isFetching } = useGetAllNewsQuery({
-    keyword: searchQuery,
-    category,
+    // keyword: searchQuery,
+    // category,
   });
   const { data: singleNewsData } = useGetSingleNewsQuery(id);
   const [deleteNews] = useDeleteNewsMutation();

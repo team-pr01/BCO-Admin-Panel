@@ -232,7 +232,7 @@ const AddBookForm: React.FC<TAddBookFormProps> = ({
                 <h3 className=" font-semibold text-gray-900">
                   Add custom structures
                 </h3>
-                {fields.map((field, index) => (
+                {fields.map((_, index) => (
                   <TextInput
                     key={index}
                     label={`Level ${index + 1} Name`}
