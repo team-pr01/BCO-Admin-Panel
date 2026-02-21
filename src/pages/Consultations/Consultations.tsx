@@ -13,16 +13,16 @@ import Loader from "../../components/shared/Loader/Loader";
 import DeleteConfirmationModal from "../../components/shared/DeleteConfirmationModal/DeleteConfirmationModal";
 
 const Consultations = () => {
-  const [searchQuery, setSearchQuery] = useState("");
-  const [category, setCategory] = useState("");
+  // const [searchQuery, setSearchQuery] = useState("");
+  // const [category, setCategory] = useState("");
   const [status, setStatus] = useState("");
   const {
     data: consultations,
     isLoading,
     isFetching,
   } = useGetAllConsultationsQuery({
-    keyword: searchQuery,
-    category,
+    // keyword: searchQuery,
+    // category,
     status,
   });
   const [updateConsultationStatus, { isLoading: isUpdatingStatus }] =
