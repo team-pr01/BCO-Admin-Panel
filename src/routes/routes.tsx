@@ -15,6 +15,7 @@ import Shop from "../pages/Shop/Shop";
 import ContentManagement from "../pages/ContentManagement/ContentManagement";
 import Users from "../pages/Users/Users";
 import { PublicRoute } from './PublicRoute';
+import Popups from "../pages/Popups/Popups";
 
 export const router = createBrowserRouter([
   {
@@ -73,6 +74,10 @@ export const router = createBrowserRouter([
       {
         path: "users",
         element: <Users />,
+      },
+      {
+        path: "popups",
+        element: <Popups />,
       },
     ],
   },

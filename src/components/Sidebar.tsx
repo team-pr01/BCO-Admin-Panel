@@ -10,6 +10,7 @@ import {
   Film,
   ShoppingBag,
   UserCheck,
+  MessageSquarePlus,
 } from "lucide-react";
 import { useSelector } from "react-redux";
 import { Link, useLocation } from "react-router-dom";
@@ -28,7 +29,11 @@ export function Sidebar() {
       path: "/dashboard/books",
     },
     { icon: Film, label: "Reels", path: "/dashboard/reels" },
-    { icon: Building, label: "Business List", path: "/dashboard/business-list" },
+    {
+      icon: Building,
+      label: "Business List",
+      path: "/dashboard/business-list",
+    },
     { icon: Newspaper, label: "News", path: "/dashboard/news" },
     { icon: FileText, label: "Content Management", path: "/dashboard/content" },
     {
@@ -46,6 +51,7 @@ export function Sidebar() {
       label: "Shop",
       path: "/dashboard/shop",
     },
+    { icon: MessageSquarePlus, label: "Popups", path: "/dashboard/popups" },
   ];
 
   const user = useSelector(useCurrentUser) as any;
