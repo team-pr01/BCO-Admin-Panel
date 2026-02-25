@@ -40,7 +40,7 @@ const BusinessListCard: React.FC<TBusinessCardProps> = ({
         loading: "Approving business...",
         success: "Business approved successfully!",
         error: "Failed to approve business.",
-      },
+      }
     );
   };
 
@@ -61,8 +61,8 @@ const BusinessListCard: React.FC<TBusinessCardProps> = ({
               business?.status === "approved"
                 ? "bg-green-500"
                 : business?.status === "pending"
-                  ? "bg-yellow-500"
-                  : "bg-red-500"
+                ? "bg-yellow-500"
+                : "bg-red-500"
             }`}
           >
             {business?.status}
@@ -71,34 +71,55 @@ const BusinessListCard: React.FC<TBusinessCardProps> = ({
 
         {/* Content */}
         <div className="p-4 space-y-2">
-          <h3 className="text-lg font-semibold text-gray-900  capitalize">
+          <h3 className="text-lg font-semibold text-gray-900 capitalize">
             {business?.businessName}
           </h3>
 
-          <p className="text-sm text-gray-500 ">
-            <span className="font-medium">Type:</span> {business?.businessType}
+          {/* Type & Stage */}
+          <p className="text-sm text-gray-500">
+            <span className="font-medium">Type:</span>{" "}
+            {business?.businessType}
           </p>
 
-          <p className="text-sm text-gray-500  flex items-center">
+          <p className="text-sm text-gray-500">
+            <span className="font-medium">Stage:</span>{" "}
+            {business?.businessStage}
+          </p>
+
+          {/* Valuation */}
+          <p className="text-sm text-gray-500">
+            <span className="font-medium">Valuation:</span>{" "}
+            ${Number(business?.askingValuation).toLocaleString()}
+          </p>
+
+          {/* Pitch Deck */}
+          <p className="text-sm text-gray-500">
+            <span className="font-medium">Pitch Deck:</span>{" "}
+            {business?.pitchDeckType}
+          </p>
+
+          {/* Location */}
+          <p className="text-sm text-gray-500 flex items-center">
             <MapPin className="h-4 w-4 mr-1" />
             {business?.location}
           </p>
 
-          <p className="text-sm text-gray-500  flex items-center">
+          {/* Phone */}
+          <p className="text-sm text-gray-500 flex items-center">
             <Phone className="h-4 w-4 mr-1" />
             {business?.phoneNumber}
           </p>
 
-          <p className="text-sm text-gray-500  line-clamp-3">
+          {/* Description */}
+          <p className="text-sm text-gray-500 line-clamp-3">
             {business?.description}
           </p>
 
+          {/* Actions */}
           <div className="mt-4 flex flex-wrap gap-2">
             <button
-              onClick={() => {
-                setActiveTab("details");
-              }}
-              className="px-3 py-1 bg-blue-100  text-blue-800 rounded-md text-sm"
+              onClick={() => setActiveTab("details")}
+              className="px-3 py-1 bg-blue-100 text-blue-800 rounded-md text-sm"
             >
               View Details
             </button>
