@@ -52,7 +52,6 @@ const AddBookForm: React.FC<TAddBookFormProps> = ({
     formState: { errors },
   } = useForm<TFormValues>({
     defaultValues: defaultValues || {
-      type: "veda",
       structure: "Chapter-Verse",
       levels: [],
     },
@@ -70,7 +69,7 @@ const AddBookForm: React.FC<TAddBookFormProps> = ({
     if (mode === "edit" && defaultValues) {
       reset({
         name: defaultValues.name || "",
-        type: defaultValues.type || "veda",
+        type: defaultValues.type,
         structure: defaultValues.structure || "Chapter-Verse",
         levels: defaultValues.levels || [],
         image: undefined,
@@ -78,7 +77,7 @@ const AddBookForm: React.FC<TAddBookFormProps> = ({
     } else if (mode === "add") {
       reset({
         name: "",
-        type: "veda",
+        type: undefined,
         structure: "Chapter-Verse",
         levels: [],
         image: undefined,
@@ -117,7 +116,8 @@ const AddBookForm: React.FC<TAddBookFormProps> = ({
     // ✅ Use setTimeout to ensure rerender (React Hook Form quirk)
     setTimeout(() => {
       if (structure === "Custom") {
-        const savedCustomLevels = previousLevelsRef.current.byStructure["Custom"];
+        const savedCustomLevels =
+          previousLevelsRef.current.byStructure["Custom"];
         if (savedCustomLevels && savedCustomLevels.length > 0) {
           replace(savedCustomLevels);
         } else {
@@ -206,9 +206,9 @@ const AddBookForm: React.FC<TAddBookFormProps> = ({
               error={errors.name}
             />
 
-            <SelectDropdown
+            <TextInput
               label="Type"
-              options={["veda", "purana", "upanishad"]}
+              placeholder="Enter book type"
               {...register("type", { required: "Type is required" })}
               error={errors.type}
             />
@@ -217,15 +217,14 @@ const AddBookForm: React.FC<TAddBookFormProps> = ({
               label="Structure"
               options={[
                 "Chapter-Verse",
-                "Mandala-Sukta-Rik",
-                "Kanda-Sarga-Shloka",
+                // "Mandala-Sukta-Rik",
+                // "Kanda-Sarga-Shloka",
                 "Custom",
               ]}
               {...register("structure", { required: "Structure is required" })}
               error={errors.structure}
             />
 
-            {/* Only show inputs if Custom */}
             {/* Only show inputs if Custom */}
             {watchStructure === "Custom" && (
               <div className="flex flex-col gap-4 bg-gray-100 p-3 rounded-xl">

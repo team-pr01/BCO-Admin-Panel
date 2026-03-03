@@ -4,9 +4,9 @@ const authApi = baseApi.injectEndpoints({
   endpoints: (builder) => ({
 
     getAllUsers: builder.query({
-      query: () => {
+      query: (keyword) => {
         return {
-          url: `/user`,
+          url: `/user/all?keyword=${keyword}`,
           method: "GET",
           credentials: "include",
         };
@@ -86,7 +86,7 @@ const authApi = baseApi.injectEndpoints({
 
     deleteUser: builder.mutation({
       query: (id) => ({
-        url: `/user/remove-user/${id}`,
+        url: `/user/delete-account/${id}`,
         method: "DELETE",
         credentials: "include",
       }),

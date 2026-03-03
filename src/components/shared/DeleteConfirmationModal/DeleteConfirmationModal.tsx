@@ -2,7 +2,8 @@
 import React, { useState } from "react";
 import { X } from "lucide-react";
 
-const requiredText = "I understand that deleting this item is permanent and cannot be undone.";
+const requiredText =
+  "I understand that deleting this item is permanent and cannot be undone.";
 
 type Props = {
   onClose: () => void;
@@ -32,7 +33,8 @@ const DeleteConfirmationModal: React.FC<Props> = ({ onClose, onConfirm }) => {
           Are you absolutely sure?
         </h2>
         <p className="text-sm text-gray-700  mb-4">
-          This action cannot be undone. Please type the sentence below to confirm:
+          This action cannot be undone. Please type the sentence below to
+          confirm:
         </p>
         <p className="text-sm font-medium italic bg-gray-100 p-2 rounded border mb-2">
           {requiredText}
@@ -41,7 +43,7 @@ const DeleteConfirmationModal: React.FC<Props> = ({ onClose, onConfirm }) => {
           value={inputText}
           onChange={handleInputChange}
           onCopy={(e) => e.preventDefault()}
-          // onPaste={(e) => e.preventDefault()}
+          onPaste={(e) => e.preventDefault()}
           className="w-full border border-gray-300 px-3 py-2 rounded focus:outline-none focus:ring-2 focus:ring-red-500 bg-white"
           placeholder="Type the sentence exactly..."
         />

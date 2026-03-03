@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { baseApi } from "../../API/baseApi";
 
 const bookTextApi = baseApi.injectEndpoints({
@@ -15,7 +16,7 @@ const bookTextApi = baseApi.injectEndpoints({
 
     getSingleText: builder.query({
       query: (id) => ({
-        url: `/book-text/${id}`,
+        url: `/book-text/single/${id}`,
         method: "GET",
         credentials: "include",
       }),

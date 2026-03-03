@@ -1,4 +1,4 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
+{/* eslint-disable @typescript-eslint/no-explicit-any */}
 import { MapPin, Phone } from "lucide-react";
 import toast from "react-hot-toast";
 import { useState } from "react";
@@ -10,12 +10,10 @@ import {
 
 type TBusinessCardProps = {
   business: any;
-  setActiveTab: (tab: string) => void;
 };
 
 const BusinessListCard: React.FC<TBusinessCardProps> = ({
   business,
-  setActiveTab,
 }) => {
   const [approveBusiness] = useApproveBusinessMutation();
   const [deleteBusiness] = useDeleteBusinessMutation();
@@ -77,25 +75,32 @@ const BusinessListCard: React.FC<TBusinessCardProps> = ({
 
           {/* Type & Stage */}
           <p className="text-sm text-gray-500">
-            <span className="font-medium">Type:</span>{" "}
-            {business?.businessType}
+            <span className="font-medium">Type:</span> {business?.businessType}
           </p>
-
           <p className="text-sm text-gray-500">
-            <span className="font-medium">Stage:</span>{" "}
-            {business?.businessStage}
+            <span className="font-medium">Stage:</span> {business?.businessStage}
           </p>
 
           {/* Valuation */}
           <p className="text-sm text-gray-500">
             <span className="font-medium">Valuation:</span>{" "}
-            ${Number(business?.askingValuation).toLocaleString()}
+            {business?.currency} {Number(business?.askingValuation).toLocaleString()}
+          </p>
+
+          {/* Required Funding */}
+          <p className="text-sm text-gray-500">
+            <span className="font-medium">Required Funding:</span>{" "}
+            {business?.currency} {Number(business?.requiredFunding).toLocaleString()}
+          </p>
+
+          {/* Investor Percentage */}
+          <p className="text-sm text-gray-500">
+            <span className="font-medium">Investor %:</span> {business?.investorPercentage}%
           </p>
 
           {/* Pitch Deck */}
           <p className="text-sm text-gray-500">
-            <span className="font-medium">Pitch Deck:</span>{" "}
-            {business?.pitchDeckType}
+            <span className="font-medium">Pitch Deck:</span> {business?.pitchDeckType}
           </p>
 
           {/* Location */}
@@ -117,12 +122,6 @@ const BusinessListCard: React.FC<TBusinessCardProps> = ({
 
           {/* Actions */}
           <div className="mt-4 flex flex-wrap gap-2">
-            <button
-              onClick={() => setActiveTab("details")}
-              className="px-3 py-1 bg-blue-100 text-blue-800 rounded-md text-sm"
-            >
-              View Details
-            </button>
 
             <button
               onClick={() => setShowDeleteModal(true)}

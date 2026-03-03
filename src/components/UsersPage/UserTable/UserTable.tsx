@@ -11,9 +11,9 @@ import toast from "react-hot-toast";
 import Loader from "../../shared/Loader/Loader";
 import DeleteConfirmationModal from "../../shared/DeleteConfirmationModal/DeleteConfirmationModal";
 
-const UserTable = () => {
+const UserTable = ({keyword} : any) => {
   const [id, setId] = useState<string>("");
-  const { data, isLoading, isFetching } = useGetAllUsersQuery({});
+  const { data, isLoading, isFetching } = useGetAllUsersQuery(keyword);
 
   const { data: singleUserData, isLoading: isUserDataLoading } =
     useGetSingleUserByIdQuery(id);

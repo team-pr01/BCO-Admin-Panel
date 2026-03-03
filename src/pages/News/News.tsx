@@ -20,11 +20,9 @@ const News = () => {
   // const [category, setCategory] = useState("");
   const [id, setId] = useState("");
   const [mode, setMode] = useState<"add" | "edit">("add");
+  const [keyword, setKeyword] = useState("");
 
-  const { data, isLoading, isFetching } = useGetAllNewsQuery({
-    // keyword: searchQuery,
-    // category,
-  });
+  const { data, isLoading, isFetching } = useGetAllNewsQuery(keyword);
   const { data: singleNewsData } = useGetSingleNewsQuery(id);
   const [deleteNews] = useDeleteNewsMutation();
 
@@ -49,15 +47,16 @@ const News = () => {
           setShowForm(true);
         }}
         setShowCategoryForm={setShowCategoryForm}
+        isSearchBarVisible={true}
+        keyword={keyword}
+        setKeyword={setKeyword}
       />
 
       <div className="flex flex-col gap-10">
         {isLoading || isFetching ? (
           <Loader size="size-10" />
         ) : data?.data?.length < 1 ? (
-          <p className="text-center text-gray-500">
-            No data found
-          </p>
+          <p className="text-center text-gray-500">No data found</p>
         ) : (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {data?.data?.map((article: any) => (

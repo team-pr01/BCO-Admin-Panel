@@ -3,6 +3,7 @@ import { useGetAllBusinessListQuery } from "../../redux/Features/BusinessList/bu
 import Loader from "../../components/shared/Loader/Loader";
 import BusinessLisCard from "../../components/BusinessListPage/BusinessLisCard/BusinessLisCard";
 import AddBusinessListForm from "../../components/BusinessListPage/AddBusinessListForm/AddBusinessListForm";
+import { Search } from "lucide-react";
 
 export type TTemple = {
   _id: string;
@@ -28,7 +29,8 @@ export type TTemple = {
 };
 const BusinessList = () => {
   const [activeTab, setActiveTab] = useState("list");
-  const { data, isLoading } = useGetAllBusinessListQuery({});
+  const [keyword, setKeyword] = useState("");
+  const { data, isLoading } = useGetAllBusinessListQuery(keyword);
 
   const tabButtons = [
     { key: "list", label: "Business List" },
@@ -53,6 +55,17 @@ const BusinessList = () => {
             {tab.label}
           </button>
         ))}
+
+        <div className="relative">
+          <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
+          <input
+            type="text"
+            placeholder="Search books..."
+            value={keyword}
+            onChange={(e) => setKeyword(e.target.value)}
+            className="w-full pl-10 pr-4 py-2 rounded-lg border border-gray-300 bg-slate-100"
+          />
+        </div>
       </div>
 
       {activeTab === "list" &&
@@ -61,11 +74,7 @@ const BusinessList = () => {
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {data?.data?.map((business: TTemple) => (
-              <BusinessLisCard
-                key={business?._id}
-                business={business}
-                setActiveTab={setActiveTab}
-              />
+              <BusinessLisCard key={business?._id} business={business} />
             ))}
           </div>
         ))}

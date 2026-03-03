@@ -15,6 +15,9 @@ export type TFormValues = {
   customBusinessType?: string;
   businessStage: string;
   askingValuation: string;
+  investorPercentage: string;
+  currency: string;
+  requiredFunding : string;
   pitchDeckType: string;
   description: string;
   phoneNumber: string;
@@ -168,6 +171,30 @@ const AddBusinessListForm = () => {
             required: "Asking valuation is required",
           })}
           error={errors.askingValuation}
+        />
+        <TextInput
+          label="Investor Percentage"
+          placeholder="e.g. 50%"
+          {...register("investorPercentage", {
+            required: "Investor percentage is required",
+          })}
+          error={errors.investorPercentage}
+        />
+        <TextInput
+          label="Currency"
+          placeholder="e.g. USD"
+          {...register("currency", {
+            required: "Currency is required",
+          })}
+          error={errors.currency}
+        />
+        <TextInput
+          label="Required Funding"
+          placeholder="e.g. 2000"
+          {...register("requiredFunding", {
+            required: "Required funding is required",
+          })}
+          error={errors.requiredFunding}
         />
 
         <SelectDropdown

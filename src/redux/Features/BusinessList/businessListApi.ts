@@ -4,8 +4,8 @@ import { baseApi } from "../../API/baseApi";
 const businessListApi = baseApi.injectEndpoints({
   endpoints: (builder) => ({
     getAllBusinessList: builder.query({
-      query: () => ({
-        url: `/business-list`,
+      query: (keyword) => ({
+        url: `/business-list?keyword=${keyword}`,
         method: "GET",
         credentials: "include",
       }),

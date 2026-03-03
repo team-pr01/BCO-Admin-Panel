@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-unused-expressions */
-import { Plus } from "lucide-react";
+import { Plus, Search } from "lucide-react";
 import type { ReactNode } from "react";
 
 interface PageHeaderProps {
@@ -9,6 +9,9 @@ interface PageHeaderProps {
   onClick: () => void;
   setShowCategoryForm?: React.Dispatch<React.SetStateAction<boolean>>;
   isCategoryButtonVisible?: boolean;
+  isSearchBarVisible?: boolean;
+  keyword?: string;
+  setKeyword?: React.Dispatch<React.SetStateAction<string>>;
 }
 
 const PageHeader = ({
@@ -18,12 +21,27 @@ const PageHeader = ({
   onClick,
   setShowCategoryForm,
   isCategoryButtonVisible = true,
+  isSearchBarVisible,
+  keyword,
+  setKeyword,
 }: PageHeaderProps) => {
   return (
     <div className="flex items-center justify-between mb-6">
-      <h2 className="text-2xl font-bold text-gray-900 ">
-        {title}
-      </h2>
+      <div className="flex items-center gap-5">
+        <h2 className="text-2xl font-bold text-gray-900 ">{title}</h2>
+        {isSearchBarVisible && (
+          <div className="relative">
+            <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
+            <input
+              type="text"
+              placeholder="Search books..."
+              value={keyword}
+              onChange={(e) => setKeyword && setKeyword(e.target.value)}
+              className="w-full pl-10 pr-4 py-2 rounded-lg border border-gray-300 bg-slate-100"
+            />
+          </div>
+        )}
+      </div>
       <div className="flex items-center gap-4">
         {isCategoryButtonVisible && (
           <button

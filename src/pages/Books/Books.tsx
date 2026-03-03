@@ -32,12 +32,13 @@ const Books = () => {
   const [mode, setMode] = useState<"add" | "edit">("add");
   const [showForm, setShowForm] = useState<boolean>(false);
   const [showBookTextForm, setShowBookTextForm] = useState<boolean>(false);
-  const [isReviewMantraModalOpen, setIsReviewMantraModalOpen] = useState<boolean>(false);
+  const [isReviewMantraModalOpen, setIsReviewMantraModalOpen] =
+    useState<boolean>(false);
   const [reportedMantraStatus, setReportedMantraStatus] = useState("");
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedBookId, setSelectedBookId] = useState<null | string>("");
   const [selectedBookTextId, setSelectedBookTextId] = useState<null | string>(
-    ""
+    "",
   );
   const { data: singleBook, isLoading: isSingleBookLoading } =
     useGetSingleBookQuery(selectedBookId);
@@ -84,6 +85,8 @@ const Books = () => {
   };
 
   const buttonText = activeTab === "Manage Books" ? "Add Book" : "Add Text";
+
+  console.log(singleBookText);
 
   return (
     <div className="flex flex-col bg-white rounded-2xl p-5">
@@ -161,34 +164,31 @@ const Books = () => {
       {activeTab === "Translations" && <Translations />}
 
       {activeTab === "Mantra Reports" && (
-
-      <div className="flex flex-col gap-4 mt-8">
-        {/* Status */}
-      <div className="flex justify-end">
-        <select
-          value={reportedMantraStatus}
-          onChange={(e) => setReportedMantraStatus(e.target.value)}
-          className="px-[18px] py-2 rounded-lg bg-neutral-70 border text-neutral-65 focus:outline-none focus:border-primary-10 transition duration-300"
-        >
-          <option value="">
-            All Reports
-          </option>
-          {["pending", "resolved", "dismissed"].map(
-            (option: any, index: number) => (
-              <option key={index} value={option}>
-                {option}
-              </option>
-            )
-          )}
-        </select>
-      </div>
-        <AllReportedMantrasTable
-          reportedMantras={reportedMantras?.data}
-          isLoading={isReportedMantrasLoading || isReportedMantrasFetching}
-          isReviewMantraModalOpen={isReviewMantraModalOpen}
-          setIsReviewMantraModalOpen={setIsReviewMantraModalOpen}
-        />
-      </div>
+        <div className="flex flex-col gap-4 mt-8">
+          {/* Status */}
+          <div className="flex justify-end">
+            <select
+              value={reportedMantraStatus}
+              onChange={(e) => setReportedMantraStatus(e.target.value)}
+              className="px-[18px] py-2 rounded-lg bg-neutral-70 border text-neutral-65 focus:outline-none focus:border-primary-10 transition duration-300"
+            >
+              <option value="">All Reports</option>
+              {["pending", "resolved", "dismissed"].map(
+                (option: any, index: number) => (
+                  <option key={index} value={option}>
+                    {option}
+                  </option>
+                ),
+              )}
+            </select>
+          </div>
+          <AllReportedMantrasTable
+            reportedMantras={reportedMantras?.data}
+            isLoading={isReportedMantrasLoading || isReportedMantrasFetching}
+            isReviewMantraModalOpen={isReviewMantraModalOpen}
+            setIsReviewMantraModalOpen={setIsReviewMantraModalOpen}
+          />
+        </div>
       )}
 
       {/* Add Form Modal */}
