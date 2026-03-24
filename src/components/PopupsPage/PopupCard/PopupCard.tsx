@@ -79,10 +79,6 @@ const PopupCard = ({ popup, setId, setShowForm, setMode }: PopupCardProps) => {
         <p className="mt-2 text-sm text-gray-600 line-clamp-3 capitalize">
           {popup?.content}
         </p>
-
-        <p className="mt-5 text-sm text-gray-600 line-clamp-3">
-          Display Frequency : {popup?.displayFrequency}
-        </p>
       </div>
     </div>
   );
