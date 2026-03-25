@@ -74,20 +74,24 @@ const ReelCard = ({
           </div>
         </div>
 
-        <p className="mt-2 text-sm text-gray-600 ">
-          {reel?.description}
+        <p className="mt-2 text-sm text-gray-600">
+          {reel?.description?.length > 60
+            ? reel.description.slice(0, 60) + "..."
+            : reel.description}
         </p>
 
-        <div className="mt-4 flex flex-wrap gap-2">
-          {reel?.tags.map((tag: string, index: number) => (
-            <span
-              key={index}
-              className="px-2 py-1 text-xs rounded-full bg-gray-100 text-gray-800 "
-            >
-              {tag}
-            </span>
-          ))}
-        </div>
+        {reel?.tags?.length > 0 && (
+          <div className="mt-4 flex flex-wrap gap-2">
+            {reel?.tags?.map((tag: string, index: number) => (
+              <span
+                key={index}
+                className="px-2 py-1 text-xs rounded-full bg-gray-100 text-gray-800 "
+              >
+                {tag}
+              </span>
+            ))}
+          </div>
+        )}
 
         <div className="mt-4 text-sm text-gray-500 ">
           Added{" "}
