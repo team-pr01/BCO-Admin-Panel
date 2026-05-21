@@ -71,6 +71,7 @@ export const baseApi = createApi({
     "consultation",
     "businessList",
     "popup",
+    "verificationRequest",
   ],
   endpoints: () => ({}),
 });

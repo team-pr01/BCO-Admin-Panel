@@ -16,6 +16,7 @@ import ContentManagement from "../pages/ContentManagement/ContentManagement";
 import Users from "../pages/Users/Users";
 import { PublicRoute } from './PublicRoute';
 import Popups from "../pages/Popups/Popups";
+import VerificationRequests from "../pages/VerificationRequests/VerificationRequests";
 
 export const router = createBrowserRouter([
   {
@@ -38,6 +39,10 @@ export const router = createBrowserRouter([
       {
         path: "messages",
         element: <Messages />,
+      },
+      {
+        path: "verification-requests",
+        element: <VerificationRequests />,
       },
       {
         path: "books",

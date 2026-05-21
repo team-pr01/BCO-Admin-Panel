@@ -22,6 +22,7 @@ export function Sidebar() {
   const sidebarLinks = [
     // { icon: LayoutDashboard, label: "Dashboard", path: "/dashboard" },
     { icon: Users, label: "Users", path: "/dashboard/users" },
+    { icon: UserCheck, label: "Verification Requests", path: "/dashboard/verification-requests" },
     { icon: AlertTriangle, label: "Messages", path: "/dashboard/messages" },
     {
       icon: BookOpen,
