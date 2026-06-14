@@ -35,6 +35,7 @@ export function Sidebar() {
       label: "Business List",
       path: "/dashboard/business-list",
     },
+    { icon: UserCheck, label: "Business Verifications", path: "/dashboard/business-verification-requests" },
     { icon: Newspaper, label: "News", path: "/dashboard/news" },
     { icon: FileText, label: "Content Management", path: "/dashboard/content" },
     {

@@ -33,6 +33,7 @@ type TFormValues = {
   tags: string;
   videoUrl?: string;
   file?: FileList;
+  productFor?: string
 };
 
 const AddProductForm = ({
@@ -68,6 +69,7 @@ const AddProductForm = ({
         "tags",
         "videoUrl",
         "file",
+        "productFor"
       ];
 
       fields.forEach((field) => {
@@ -140,6 +142,13 @@ const AddProductForm = ({
             </div>
 
             <div className="flex flex-col gap-6">
+              <TextInput
+                label="Product For"
+                placeholder="Enter user id"
+                {...register("productFor")}
+                error={errors.productFor}
+                isRequired={false}
+              />
               <TextInput
                 label="Product Name"
                 placeholder="Enter product name"

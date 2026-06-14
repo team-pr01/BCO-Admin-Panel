@@ -17,6 +17,8 @@ import Users from "../pages/Users/Users";
 import { PublicRoute } from './PublicRoute';
 import Popups from "../pages/Popups/Popups";
 import VerificationRequests from "../pages/VerificationRequests/VerificationRequests";
+import UserDetails from "../pages/Users/UserDetails";
+import BusinessVerificationRequests from "../pages/BusinessVerificationRequests/BusinessVerificationRequests";
 
 export const router = createBrowserRouter([
   {
@@ -61,6 +63,10 @@ export const router = createBrowserRouter([
         element: <BusinessList />,
       },
       {
+        path: "business-verification-requests",
+        element: <BusinessVerificationRequests />,
+      },
+      {
         path: "consultancy-service",
         element: <ConsultancyService />,
       },
@@ -79,6 +85,10 @@ export const router = createBrowserRouter([
       {
         path: "users",
         element: <Users />,
+      },
+      {
+        path: "user/:id",
+        element: <UserDetails />,
       },
       {
         path: "popups",

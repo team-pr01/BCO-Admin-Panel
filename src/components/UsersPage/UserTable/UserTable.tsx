@@ -10,10 +10,12 @@ import {
 import toast from "react-hot-toast";
 import Loader from "../../shared/Loader/Loader";
 import DeleteConfirmationModal from "../../shared/DeleteConfirmationModal/DeleteConfirmationModal";
+import { Link } from "react-router-dom";
 
-const UserTable = ({keyword} : any) => {
+const UserTable = ({ keyword }: any) => {
   const [id, setId] = useState<string>("");
   const { data, isLoading, isFetching } = useGetAllUsersQuery(keyword);
+  console.log(data);
 
   const { data: singleUserData, isLoading: isUserDataLoading } =
     useGetSingleUserByIdQuery(id);
@@ -48,7 +50,7 @@ const UserTable = ({keyword} : any) => {
               Joined
             </th>
             <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-             Actions
+              Actions
             </th>
           </tr>
         </thead>
@@ -66,15 +68,17 @@ const UserTable = ({keyword} : any) => {
           <tbody className="bg-white divide-y divide-gray-200 max-w-[1000px]">
             {data?.data?.map((user: any) => (
               <tr key={user._id}>
-                <td className="px-6 py-4 whitespace-nowrap">
-                  <span className="text-sm text-gray-500 capitalize">
+                <td className="px-6 py-4 whitespace-nowrap flex flex-col text-sm text-gray-500">
+                  <Link
+                    to={`/dashboard/user/${user?._id}`}
+                    className="hover:underline capitalize font-semibold"
+                  >
                     {user.name}
-                  </span>
+                  </Link>
+                  {user?._id}
                 </td>
                 <td className="px-6 py-4 whitespace-nowrap">
-                  <span className="text-sm text-gray-500">
-                    {user.email}
-                  </span>
+                  <span className="text-sm text-gray-500">{user.email}</span>
                 </td>
                 <td className="px-6 py-4 whitespace-nowrap">
                   <span className="text-sm text-gray-500">
@@ -86,15 +90,15 @@ const UserTable = ({keyword} : any) => {
                 </td>
 
                 <td className="px-6 py-4 whitespace-nowrap text-left text-sm font-medium">
-                    <button
-                      onClick={() => {
-                        setShowDeleteModal(true);
-                        setId(user?._id);
-                      }}
-                      className="text-red-600  hover:text-red-900"
-                    >
-                      <Trash2 className="w-4 h-4" />
-                    </button>
+                  <button
+                    onClick={() => {
+                      setShowDeleteModal(true);
+                      setId(user?._id);
+                    }}
+                    className="text-red-600  hover:text-red-900"
+                  >
+                    <Trash2 className="w-4 h-4" />
+                  </button>
                 </td>
               </tr>
             ))}
