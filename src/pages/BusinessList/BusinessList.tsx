@@ -31,6 +31,7 @@ const BusinessList = () => {
   const [activeTab, setActiveTab] = useState("list");
   const [keyword, setKeyword] = useState("");
   const { data, isLoading } = useGetAllBusinessListQuery(keyword);
+  console.log(data);
 
   const tabButtons = [
     { key: "list", label: "Business List" },

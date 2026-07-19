@@ -8,9 +8,14 @@ const requiredText =
 type Props = {
   onClose: () => void;
   onConfirm: any;
+  canCopy?: boolean;
 };
 
-const DeleteConfirmationModal: React.FC<Props> = ({ onClose, onConfirm }) => {
+const DeleteConfirmationModal: React.FC<Props> = ({
+  onClose,
+  onConfirm,
+  canCopy = false,
+}) => {
   const [inputText, setInputText] = useState("");
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -32,21 +37,29 @@ const DeleteConfirmationModal: React.FC<Props> = ({ onClose, onConfirm }) => {
         <h2 className="text-lg font-bold mb-4 text-red-600">
           Are you absolutely sure?
         </h2>
-        <p className="text-sm text-gray-700  mb-4">
+
+        <p className="text-sm text-gray-700 mb-4">
           This action cannot be undone. Please type the sentence below to
           confirm:
         </p>
+
         <p className="text-sm font-medium italic bg-gray-100 p-2 rounded border mb-2">
           {requiredText}
         </p>
+
         <input
           value={inputText}
           onChange={handleInputChange}
-          onCopy={(e) => e.preventDefault()}
-          onPaste={(e) => e.preventDefault()}
+          onCopy={(e) => {
+            if (!canCopy) e.preventDefault();
+          }}
+          onPaste={(e) => {
+            if (!canCopy) e.preventDefault();
+          }}
           className="w-full border border-gray-300 px-3 py-2 rounded focus:outline-none focus:ring-2 focus:ring-red-500 bg-white"
           placeholder="Type the sentence exactly..."
         />
+
         <button
           onClick={() => {
             onConfirm();

@@ -15,7 +15,6 @@ import { Link } from "react-router-dom";
 const UserTable = ({ keyword }: any) => {
   const [id, setId] = useState<string>("");
   const { data, isLoading, isFetching } = useGetAllUsersQuery(keyword);
-  console.log(data);
 
   const { data: singleUserData, isLoading: isUserDataLoading } =
     useGetSingleUserByIdQuery(id);
@@ -116,6 +115,7 @@ const UserTable = ({ keyword }: any) => {
         <DeleteConfirmationModal
           onClose={() => setShowDeleteModal(false)}
           onConfirm={handleConfirmDelete}
+          canCopy={true}
         />
       )}
     </div>

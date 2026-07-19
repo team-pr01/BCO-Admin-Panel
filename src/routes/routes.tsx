@@ -14,16 +14,21 @@ import Consultations from "../pages/Consultations/Consultations";
 import Shop from "../pages/Shop/Shop";
 import ContentManagement from "../pages/ContentManagement/ContentManagement";
 import Users from "../pages/Users/Users";
-import { PublicRoute } from './PublicRoute';
+import { PublicRoute } from "./PublicRoute";
 import Popups from "../pages/Popups/Popups";
 import VerificationRequests from "../pages/VerificationRequests/VerificationRequests";
 import UserDetails from "../pages/Users/UserDetails";
 import BusinessVerificationRequests from "../pages/BusinessVerificationRequests/BusinessVerificationRequests";
+import EditBusinessList from "../pages/BusinessList/EditBusinessList/EditBusinessList";
 
 export const router = createBrowserRouter([
   {
     path: "/",
-    element: <PublicRoute><Login /></PublicRoute>,
+    element: (
+      <PublicRoute>
+        <Login />
+      </PublicRoute>
+    ),
   },
   {
     path: "unauthorized",
@@ -61,6 +66,10 @@ export const router = createBrowserRouter([
       {
         path: "business-list",
         element: <BusinessList />,
+      },
+      {
+        path: "business-list/edit/:id",
+        element: <EditBusinessList />,
       },
       {
         path: "business-verification-requests",

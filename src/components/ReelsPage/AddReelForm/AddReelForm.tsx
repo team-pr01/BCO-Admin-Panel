@@ -17,7 +17,6 @@ import SubmitButton from "../../reusable/SubmitButton/SubmitButton";
 type TFormValues = {
   title: string;
   description: string;
-  videoSource: string;
   videoUrl: string;
   category: string;
   tags: string[];
@@ -51,7 +50,6 @@ const AddReelForm: React.FC<TAddReelFormProps> = ({
     if (mode === "edit" && defaultValues) {
       setValue("title", defaultValues.title);
       setValue("description", defaultValues.description);
-      setValue("videoSource", defaultValues.videoSource);
       setValue("videoUrl", defaultValues.videoUrl);
       setValue("category", defaultValues.category);
       setTags(defaultValues.tags || []);
@@ -170,15 +168,6 @@ const AddReelForm: React.FC<TAddReelFormProps> = ({
                 {...register("description", {
                   required: "Description is required",
                 })}
-              />
-
-              <TextInput
-                label="Video Source"
-                placeholder="Enter video source (e.g., youtube, vimeo)"
-                {...register("videoSource", {
-                  required: "Video source is required",
-                })}
-                error={errors.videoSource}
               />
 
               <TextInput

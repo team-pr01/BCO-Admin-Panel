@@ -1,24 +1,44 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { Mail, Phone, Timer, Users } from "lucide-react";
+import { useState } from "react";
+import toast from "react-hot-toast";
+import { useDeleteMessageMutation } from "../../../redux/Features/Messages/messageApi";
+import DeleteConfirmationModal from "../../shared/DeleteConfirmationModal/DeleteConfirmationModal";
 
 type TEmergencyPostCardProps = {
   post: any;
 };
 const MessageCard: React.FC<TEmergencyPostCardProps> = ({ post }) => {
+  const [deleteMessage] = useDeleteMessageMutation();
+  const [showDeleteModal, setShowDeleteModal] = useState<boolean>(false);
+
+  const handleConfirmDelete = async () => {
+    toast.promise(deleteMessage(post?._id).unwrap(), {
+      loading: "Deleting Message...",
+      success: "Message deleted successfully!",
+      error: "Failed to delete message.",
+    });
+    setShowDeleteModal(false);
+  };
   return (
     <>
       <div className="bg-white rounded-lg shadow-sm p-6">
         <div className="flex items-start justify-between">
           <div className="flex-1">
-            <div className="flex items-center gap-2">
+            <div className="flex items-center justify-between gap-2">
               <h3 className="text-lg font-semibold text-gray-900 ">
                 {post?._id}
               </h3>
+
+              <button
+                onClick={() => setShowDeleteModal(true)}
+                className="px-3 py-1 bg-red-100 text-red-800 rounded-md text-sm"
+              >
+                Delete
+              </button>
             </div>
 
-            <p className="mt-2 text-gray-600 ">
-              {post.message}
-            </p>
+            <p className="mt-2 text-gray-600 ">{post.message}</p>
             <div className="mt-4 flex items-center space-x-4 text-sm text-gray-500 ">
               <span className="flex items-center">
                 <Timer className="h-4 w-4 mr-1" />
@@ -47,6 +67,14 @@ const MessageCard: React.FC<TEmergencyPostCardProps> = ({ post }) => {
           </div>
         </div>
       </div>
+
+      {showDeleteModal && (
+        <DeleteConfirmationModal
+          onClose={() => setShowDeleteModal(false)}
+          onConfirm={handleConfirmDelete}
+          canCopy={true}
+        />
+      )}
     </>
   );
 };
