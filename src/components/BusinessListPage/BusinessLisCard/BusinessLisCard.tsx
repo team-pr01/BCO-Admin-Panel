@@ -216,6 +216,7 @@ const BusinessListCard: React.FC<TBusinessCardProps> = ({ business }) => {
         <DeleteConfirmationModal
           onClose={() => setShowDeleteModal(false)}
           onConfirm={handleConfirmDelete}
+          canCopy={true}
         />
       )}
     </>

@@ -356,6 +356,7 @@ const Shop = () => {
         <DeleteConfirmationModal
           onClose={() => setShowDeleteModal(false)}
           onConfirm={handleConfirmDelete}
+          canCopy={true}
         />
       )}
 

@@ -9,9 +9,9 @@ import type { BaseQueryApi, BaseQueryFn, FetchArgs } from "@reduxjs/toolkit/quer
 import type { DefinitionType } from "@reduxjs/toolkit/query";
 
 // export const baseUrl = "https://api.bcoeco.com";
-// export const baseUrl = "https://bco-app-server.onrender.com"; // development server
+export const baseUrl = "https://bco-app-server.onrender.com"; // development server
 // export const baseUrl = "https://bcoeco-server.onrender.com"; // production server
-export const baseUrl = "http://localhost:5000";
+// export const baseUrl = "http://localhost:5000";
 
 const baseQuery = fetchBaseQuery({
   baseUrl: `${baseUrl}/api/v1`,
