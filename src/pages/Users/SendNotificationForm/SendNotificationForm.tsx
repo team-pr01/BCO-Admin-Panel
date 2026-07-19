@@ -189,19 +189,19 @@ const filteredUsers = selectedCountry
   return (
     showForm && (
       <div className="fixed inset-0 bg-gray-800/50 flex items-center justify-center p-4 z-50">
-        <div className="bg-white dark:bg-gray-800 rounded-lg shadow-xl max-w-2xl w-full max-h-[80vh] overflow-y-auto">
+        <div className="bg-white rounded-lg shadow-xl max-w-2xl w-full max-h-[80vh] overflow-y-auto">
           <form
             onSubmit={handleSubmit(handleSendNotification)}
             className="p-6 space-y-6"
           >
             <div className="flex items-center justify-between">
-              <h3 className="text-xl font-semibold text-gray-900 dark:text-white">
-                Send New Notification
+              <h3 className="text-xl font-semibold text-gray-900">
+                Send Notification
               </h3>
               <button
                 type="button"
                 onClick={() => setShowForm(false)}
-                className="text-gray-400 hover:text-gray-500 dark:hover:text-gray-300"
+                className="text-gray-400 hover:text-gray-500"
               >
                 <X className="h-6 w-6" />
               </button>
@@ -246,36 +246,36 @@ const filteredUsers = selectedCountry
               /> */}
 
               <div>
-                <p className="font-medium text-gray-700 dark:text-white mb-2">
+                <p className="font-medium text-gray-700 mb-2">
                   Targeted Audience <span className="text-red-600"> *</span>
                 </p>
 
                 <div className="mt-4 overflow-x-auto">
                   <table className="min-w-full divide-y divide-gray-200 border border-gray-300">
-                    <thead className="bg-gray-100 dark:bg-gray-800">
+                    <thead className="bg-gray-100">
                       <tr>
-                        <th className="px-4 py-2 text-left text-sm font-medium text-gray-700 dark:text-white">
+                        <th className="px-4 py-2 text-left text-sm font-medium text-gray-700">
                           <input
                             type="checkbox"
                             checked={isAllSelected}
                             onChange={toggleSelectAll}
                           />
                         </th>
-                        <th className="px-4 py-2 text-left text-sm font-medium text-gray-700 dark:text-white">
+                        <th className="px-4 py-2 text-left text-sm font-medium text-gray-700">
                           User ID
                         </th>
-                        <th className="px-4 py-2 text-left text-sm font-medium text-gray-700 dark:text-white">
+                        <th className="px-4 py-2 text-left text-sm font-medium text-gray-700">
                           Name
                         </th>
-                        <th className="px-4 py-2 text-left text-sm font-medium text-gray-700 dark:text-white">
+                        <th className="px-4 py-2 text-left text-sm font-medium text-gray-700">
                           Location
                         </th>
-                        <th className="px-4 py-2 text-left text-sm font-medium text-gray-700 dark:text-white">
+                        <th className="px-4 py-2 text-left text-sm font-medium text-gray-700">
                           Phone Number
                         </th>
                       </tr>
                     </thead>
-                    <tbody className="bg-white dark:bg-gray-900">
+                    <tbody className="bg-white">
                       {isUserLoading || isFetching ? (
                         <tr>
                           <td colSpan={5} className="py-6 text-center">
@@ -286,7 +286,7 @@ const filteredUsers = selectedCountry
                         <tr>
                           <td
                             colSpan={5}
-                            className="py-6 text-center text-gray-500 dark:text-gray-300"
+                            className="py-6 text-center text-gray-500"
                           >
                             No user found
                           </td>
@@ -295,7 +295,7 @@ const filteredUsers = selectedCountry
                         filteredUsers?.map((user: any) => (
                           <tr
                             key={user._id}
-                            className="border-b border-gray-300 dark:border-gray-700"
+                            className="border-b border-gray-300"
                           >
                             <td className="px-4 py-2">
                               <input
@@ -304,16 +304,16 @@ const filteredUsers = selectedCountry
                                 onChange={() => toggleSelectUser(user._id)}
                               />
                             </td>
-                            <td className="px-4 py-2 text-sm text-gray-800 dark:text-gray-100">
+                            <td className="px-4 py-2 text-sm text-gray-800">
                               {user._id}
                             </td>
-                            <td className="px-4 py-2 text-sm text-gray-800 dark:text-gray-100">
+                            <td className="px-4 py-2 text-sm text-gray-800">
                               {user.name}
                             </td>
-                            <td className="px-4 py-2 text-sm text-gray-800 dark:text-gray-100">
+                            <td className="px-4 py-2 text-sm text-gray-800">
                               {user.district || "N/A"}, {user.country || "N/A"}
                             </td>
-                            <td className="px-4 py-2 text-sm text-gray-800 dark:text-gray-100">
+                            <td className="px-4 py-2 text-sm text-gray-800">
                               {user.phone || "N/A"}
                             </td>
                           </tr>
@@ -329,7 +329,7 @@ const filteredUsers = selectedCountry
               <button
                 type="button"
                 onClick={() => setShowForm(false)}
-                className="px-4 py-2 border border-gray-300 rounded-lg shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 dark:bg-gray-700 dark:border-gray-600 dark:text-gray-200 dark:hover:bg-gray-600"
+                className="px-4 py-2 border border-gray-300 rounded-lg shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50"
               >
                 Cancel
               </button>
