@@ -13,6 +13,7 @@ import { useGetAllCategoriesQuery } from "../../redux/Features/Categories/ReelCa
 import ProductBanner from "../../components/ShopPage/ProductBanner/ProductBanner";
 import Loader from "../../components/shared/Loader/Loader";
 import DeleteConfirmationModal from "../../components/shared/DeleteConfirmationModal/DeleteConfirmationModal";
+import Pagination from "./Pagination";
 
 export type TProduct = {
   _id: string;
@@ -39,13 +40,17 @@ const Shop = () => {
   const [mode, setMode] = useState<"add" | "edit">("add");
   const [searchQuery, setSearchQuery] = useState<string>("");
   const [category, setCategory] = useState<string>("");
+  const [currentPage, setCurrentPage] = useState<number>(1);
+  const [itemsPerPage, setItemsPerPage] = useState<number>(10);
 
   const { Plus, Pencil, Trash2, Package } = icons;
 
-  // Get all Ayurveda items
+  // Get all products with pagination
   const { data, isLoading, isFetching } = useGetAllProductsQuery({
     keyword: searchQuery,
-    category,
+    category: category || undefined,
+    page: currentPage,
+    limit: itemsPerPage,
   });
 
   const { data: categories } = useGetAllCategoriesQuery({});
@@ -58,19 +63,23 @@ const Shop = () => {
   );
 
   const allProducts = data?.data?.products || [];
+  const pagination = data?.data?.pagination || {};
+  console.log(pagination);
 
   const {
     data: singleProductData,
     isLoading: isSingleDataLoading,
     isFetching: isSingleDataFetching,
-  } = useGetSingleProductQuery(productId);
+  } = useGetSingleProductQuery(productId, {
+    skip: !productId,
+  });
 
   const stats = useMemo(
     () => ({
-      totalProducts: allProducts?.length || 0,
-      totalClicks: allProducts.reduce((acc: any, p: any) => acc + p.clicks, 0),
+      totalProducts: pagination?.total || 0,
+      totalClicks: allProducts.reduce((acc: any, p: any) => acc + (p.clicks || 0), 0),
     }),
-    [allProducts]
+    [allProducts, pagination?.total]
   );
 
   const LabelBadge: React.FC<{ label: any | undefined }> = ({ label }) => {
@@ -96,38 +105,52 @@ const Shop = () => {
   const [showDeleteModal, setShowDeleteModal] = useState(false);
 
   const handleConfirmDelete = async () => {
-    toast.promise(deleteProduct(productId).unwrap(), {
+    await toast.promise(deleteProduct(productId).unwrap(), {
       loading: "Deleting...",
       success: "Deleted successfully!",
       error: "Failed to delete.",
     });
+    setShowDeleteModal(false);
   };
+
+  // Handle page change
+  const handlePageChange = (page: number) => {
+    setCurrentPage(page);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  // Handle items per page change
+  const handleItemsPerPageChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    setItemsPerPage(Number(e.target.value));
+    setCurrentPage(1); // Reset to first page when changing items per page
+  };
+
   return (
     <div className="space-y-6">
-      <h2 className="text-2xl font-bold text-slate-900 ">
+      <h2 className="text-2xl font-bold text-slate-900">
         Shop Management
       </h2>
 
       {/* Stats card */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-        <div className="bg-white p-6 rounded-2xl border border-slate-200  flex items-center gap-4">
+        <div className="bg-white p-6 rounded-2xl border border-slate-200 flex items-center gap-4">
           <div className="p-3 rounded-full bg-blue-100">
             <Package className="w-6 h-6 text-blue-500" />
           </div>
           <div>
             <p className="text-slate-500">Total Products</p>
-            <p className="text-2xl font-bold text-slate-900 ">
+            <p className="text-2xl font-bold text-slate-900">
               {stats.totalProducts}
             </p>
           </div>
         </div>
-        <div className="bg-white p-6 rounded-2xl border border-slate-200  flex items-center gap-4">
+        <div className="bg-white p-6 rounded-2xl border border-slate-200 flex items-center gap-4">
           <div className="p-3 rounded-full bg-green-100">
             <BarChart className="w-6 h-6 text-green-500" />
           </div>
           <div>
             <p className="text-slate-500">Total Clicks</p>
-            <p className="text-2xl font-bold text-slate-900 ">
+            <p className="text-2xl font-bold text-slate-900">
               {stats.totalClicks.toLocaleString()}
             </p>
           </div>
@@ -135,37 +158,41 @@ const Shop = () => {
       </div>
 
       {/* Table & Header */}
-      <div className="bg-white p-6 rounded-2xl border border-slate-200 ">
+      <div className="bg-white p-6 rounded-2xl border border-slate-200">
         {/* Table header */}
-        <div className="flex justify-between items-center mb-4">
+        <div className="flex flex-wrap justify-between items-center gap-4 mb-4">
           <h3 className="text-lg font-bold">All Products</h3>
-          <div className="flex items-center gap-3">
+          <div className="flex flex-wrap items-center gap-3">
             <div className="flex-1 min-w-[200px]">
               <div className="relative">
                 <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
                 <input
                   type="text"
-                  placeholder={`Search product by name...`}
+                  placeholder="Search product by name..."
                   value={searchQuery}
-                  onChange={(e) => setSearchQuery(e.target.value)}
+                  onChange={(e) => {
+                    setSearchQuery(e.target.value);
+                    setCurrentPage(1); // Reset to first page on search
+                  }}
                   className="w-full pl-10 pr-4 py-2 rounded-lg border border-gray-300 bg-white focus:outline-none focus:border-primary-500 transition duration-300"
                 />
               </div>
             </div>
-            {category !== null && (
-              <select
-                value={category}
-                onChange={(e) => setCategory && setCategory(e.target.value)}
-                className="px-2 py-2 rounded-lg border border-gray-300 bg-white focus:outline-none focus:border-primary-500 transition duration-300"
-              >
-                <option value="">All Categories</option>
-                {categoryNames?.map((category: any, index: number) => (
-                  <option key={index} value={category}>
-                    {category}
-                  </option>
-                ))}
-              </select>
-            )}
+            <select
+              value={category}
+              onChange={(e) => {
+                setCategory(e.target.value);
+                setCurrentPage(1); // Reset to first page on category change
+              }}
+              className="px-2 py-2 rounded-lg border border-gray-300 bg-white focus:outline-none focus:border-primary-500 transition duration-300"
+            >
+              <option value="">All Categories</option>
+              {categoryNames?.map((category: any, index: number) => (
+                <option key={index} value={category}>
+                  {category}
+                </option>
+              ))}
+            </select>
             <button
               onClick={() => setShowCategoryForm(true)}
               className="flex items-center gap-2 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700"
@@ -184,10 +211,10 @@ const Shop = () => {
           </div>
         </div>
 
-          {/* Product table */}
+        {/* Product table */}
         <div className="overflow-x-auto">
           <table className="w-full text-left text-sm whitespace-nowrap">
-            <thead className="border-b border-slate-200  text-slate-500">
+            <thead className="border-b border-slate-200 text-slate-500">
               <tr>
                 <th className="p-3 font-semibold">PRODUCT</th>
                 <th className="p-3 font-semibold">CATEGORY</th>
@@ -210,7 +237,7 @@ const Shop = () => {
                 allProducts.map((product: TProduct) => (
                   <tr
                     key={product._id}
-                    className="border-b border-slate-200/50 /50 hover:bg-slate-50"
+                    className="border-b border-slate-200/50 hover:bg-slate-50"
                   >
                     <td className="p-3">
                       <div className="flex items-center gap-3">
@@ -219,7 +246,7 @@ const Shop = () => {
                           alt={product.name}
                           className="w-12 h-12 rounded-md object-cover"
                         />
-                        <span className="font-medium text-slate-900 ">
+                        <span className="font-medium text-slate-900">
                           {product.name}
                         </span>
                       </div>
@@ -228,17 +255,17 @@ const Shop = () => {
                       {product.category}
                     </td>
                     <td className="p-3 font-mono text-slate-800">
-                      {Number(product.discountedPrice)} {" "}
-                      <span className="text-sm line-through text-red-500">
-                          {Number(product.basePrice).toFixed(2)}
-                      </span>{" "}
+                      {Number(product.discountedPrice)} 
+                      <span className="text-sm line-through text-red-500 ml-1">
+                        {Number(product.basePrice).toFixed(2)}
+                      </span>
                       {product.currency}
                     </td>
                     <td className="p-3">
                       <LabelBadge label={product.label} />
                     </td>
                     <td className="p-3 text-center text-slate-600 font-mono">
-                      {product.clicks}
+                      {product.clicks || 0}
                     </td>
                     <td className="p-3">
                       <div className="flex justify-center items-center gap-1">
@@ -267,10 +294,7 @@ const Shop = () => {
                 ))
               ) : (
                 <tr>
-                  <td
-                    colSpan={6}
-                    className="py-10 text-center text-slate-500"
-                  >
+                  <td colSpan={6} className="py-10 text-center text-slate-500">
                     No products found
                   </td>
                 </tr>
@@ -278,6 +302,38 @@ const Shop = () => {
             </tbody>
           </table>
         </div>
+
+        {/* Pagination */}
+        {pagination.totalPages > 1 && (
+          <div className="flex flex-wrap justify-between items-center mt-6 pt-4 border-t border-slate-200">
+            <div className="flex items-center gap-2 text-sm text-slate-600">
+              <span>Show</span>
+              <select
+                value={itemsPerPage}
+                onChange={handleItemsPerPageChange}
+                className="px-2 py-1 border border-gray-300 rounded-lg focus:outline-none focus:border-primary-500"
+              >
+                <option value={5}>5</option>
+                <option value={10}>10</option>
+                <option value={20}>20</option>
+                <option value={50}>50</option>
+              </select>
+              <span>entries</span>
+            </div>
+            
+            <div className="text-sm text-slate-600">
+              Showing {((currentPage - 1) * itemsPerPage) + 1} to{' '}
+              {Math.min(currentPage * itemsPerPage, pagination.total)} of{' '}
+              {pagination.total} entries
+            </div>
+
+            <Pagination
+              currentPage={currentPage}
+              totalPages={pagination.totalPages}
+              onPageChange={handlePageChange}
+            />
+          </div>
+        )}
       </div>
 
       {showForm && (
@@ -303,7 +359,7 @@ const Shop = () => {
         />
       )}
 
-      <ProductBanner/>
+      <ProductBanner />
     </div>
   );
 };
